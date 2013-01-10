@@ -38,6 +38,8 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 
 ## 着手中/予定コンテンツ
 
+* [INDENTED_SYNTAX](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/INDENTED_SYNTAX.md) [@t32k](https://github.com/t32k)
+* [SCSS_FOR_SASS_USERS](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SCSS_FOR_SASS_USERS.md) [@t32k](https://github.com/t32k)
 * [FAQ](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/FAQ.md) [@mazzo46](https://github.com/mazzo46)
 * SASS_REFERENCE
   * [Using Sass](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#using-sass) [@hokaccha](https://github.com/hokaccha)
@@ -48,8 +50,6 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 
 ## 未着手コンテンツ
 
-* [INDENTED_SYNTAX](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/INDENTED_SYNTAX.md)
-* [SCSS_FOR_SASS_USERS](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SCSS_FOR_SASS_USERS.md)
 * SASS_REFERENCE
   * [Introduction（冒頭部分）](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#sass-syntactically-awesome-stylesheets)
   * [Features](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#features)
