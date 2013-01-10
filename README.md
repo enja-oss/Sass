@@ -38,27 +38,27 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 
 ## 着手中/予定コンテンツ
 
--
+* [FAQ](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/FAQ.md) [@mazzo46](https://github.com/mazzo46)
+* SASS_REFERENCE
+  * [Using Sass](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#using-sass) [@hokaccha](https://github.com/hokaccha)
+  * [@-Rules and Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#-rules-and-directives-directives) [@tokuda109](https://github.com/tokuda109)
+  * [Control Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives) [@tokuda109](https://github.com/tokuda109)
+  * [Output Style](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#output-style) [@mazzo46](https://github.com/mazzo46)
+  * [Extending Sass](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#extending-sass) [@mazzo46](https://github.com/mazzo46)
 
 ## 未着手コンテンツ
 
 * [INDENTED_SYNTAX](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/INDENTED_SYNTAX.md)
 * [SCSS_FOR_SASS_USERS](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SCSS_FOR_SASS_USERS.md)
-* [FAQ](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/FAQ.md)
 * SASS_REFERENCE
   * [Introduction（冒頭部分）](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#sass-syntactically-awesome-stylesheets)
   * [Features](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#features)
   * [Syntax](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#syntax)
-  * [Using Sass](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#using-sass)
   * [CSS Extensions](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#css-extensions)
   * [Comments: /* */ and //](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#comments---and--comments)
   * [SassScript](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#sassscript-sassscript)
-  * [@-Rules and Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#-rules-and-directives-directives)
-  * [Control Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives)
   * [Mixin Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#mixin-directives-mixins)
   * [Function Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#function-directives-function_directives)
-  * [Output Style](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#output-style)
-  * [Extending Sass](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#extending-sass)
 
 コンテンツの翻訳にご協力くださる方は、ぜひ[着手予定の宣言コーナー](https://github.com/enja-oss/sass/issues/1)でお知らせください。
 その際に着手予定のパートがすでに他の方と重複していないか確認ください。
