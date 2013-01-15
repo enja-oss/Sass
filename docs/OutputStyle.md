@@ -19,16 +19,18 @@ Sassのデフォルトスタイルとなっています。
 
 例:
 
-    #main {
-      color: #fff;
-      background-color: #000; }
-      #main p {
-        width: 10em; }
+```css
+#main {
+  color: #fff;
+  background-color: #000; }
+  #main p {
+    width: 10em; }
 
-    .huge {
-      font-size: 10em;
-      font-weight: bold;
-      text-decoration: underline; }
+.huge {
+  font-size: 10em;
+  font-weight: bold;
+  text-decoration: underline; }
+```
 
 ネストスタイルは、大きいCSSファイルを見る際にとても便利です：
 ファイルの構造を実際には何も読まずに、簡単に把握できます。
@@ -41,19 +43,21 @@ Sassのデフォルトスタイルとなっています。
 
 例:
 
-    #main {
-      color: #fff;
-      background-color: #000;
-    }
-    #main p {
-      width: 10em;
-    }
+```css
+#main {
+  color: #fff;
+  background-color: #000;
+}
+#main p {
+  width: 10em;
+}
 
-    .huge {
-      font-size: 10em;
-      font-weight: bold;
-      text-decoration: underline;
-    }
+.huge {
+  font-size: 10em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+```
 
 ### `:compact`
 
@@ -65,10 +69,12 @@ Sassのデフォルトスタイルとなっています。
 
 例:
 
-    #main { color: #fff; background-color: #000; }
-    #main p { width: 10em; }
+```css
+#main { color: #fff; background-color: #000; }
+#main p { width: 10em; }
 
-    .huge { font-size: 10em; font-weight: bold; text-decoration: underline; }
+.huge { font-size: 10em; font-weight: bold; text-decoration: underline; }
+```
 
 ### `:compressed`
 
@@ -79,4 +85,7 @@ Sassのデフォルトスタイルとなっています。
 
 例:
 
-    #main{color:#fff;background-color:#000}#main p{width:10em}.huge{font-size:10em;font-weight:bold;text-decoration:underline}
+```css
+#main{color:#fff;background-color:#000}#main p{width:10em}.huge{font-size:10em;font-weight:bold;text-decoration:underline}
+```
+
