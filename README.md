@@ -32,34 +32,9 @@ Markdown上で元文書の表現を再現できるようご協力ください。
 en.ja-ossプロジェクトでは現在管理者を募集しています。
 詳しくは[こちらを参照してください](https://github.com/enja-oss/README/issues/12)。
 
-## 翻訳済みコンテンツ
-* [FAQ](https://github.com/enja-oss/Sass/blob/master/docs/FAQ.md) 
-* SASS_REFERENCE
-  * [Output Style](https://github.com/enja-oss/Sass/blob/master/docs/OutputStyle.md) 
-  * [Extending Sass](https://github.com/enja-oss/Sass/blob/master/docs/ExtendingSass.md)  
+## 翻訳コンテンツ
 
--
-
-## 着手中/予定コンテンツ
-
-* [INDENTED_SYNTAX](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/INDENTED_SYNTAX.md) | [@t32k](https://github.com/t32k)
-* [SCSS_FOR_SASS_USERS](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SCSS_FOR_SASS_USERS.md) | [@t32k](https://github.com/t32k)
-* SASS_REFERENCE
-  * [Using Sass](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#using-sass) | [@hokaccha](https://github.com/hokaccha)
-  * [CSS Extensions](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#css-extensions) | [@hiloki](https://github.com/hiloki)
-  * [Comments: /* */ and //](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#comments---and--comments) | [@hiloki](https://github.com/hiloki)
-  * [@-Rules and Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#-rules-and-directives-directives) | [@tokuda109](https://github.com/tokuda109)
-  * [Control Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives) | [@tokuda109](https://github.com/tokuda109)
-
-## 未着手コンテンツ
-
-* SASS_REFERENCE
-  * [Introduction（冒頭部分）](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#sass-syntactically-awesome-stylesheets)
-  * [Features](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#features)
-  * [Syntax](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#syntax)
-  * [SassScript](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#sassscript-sassscript)
-  * [Mixin Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#mixin-directives-mixins)
-  * [Function Directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#function-directives-function_directives)
+[wiki](https://github.com/enja-oss/Sass/wiki/%E7%BF%BB%E8%A8%B3%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E4%B8%80%E8%A6%A7)を参照してください。
 
 コンテンツの翻訳にご協力くださる方は、ぜひ[着手予定の宣言コーナー](https://github.com/enja-oss/sass/issues/1)でお知らせください。
 その際に着手予定のパートがすでに他の方と重複していないか確認ください。
