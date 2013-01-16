@@ -41,7 +41,7 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 
 ##参照先
 
-**TODO**
+翻訳当時のSassの[doc-src](https://github.com/nex3/sass/tree/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src)内の文書を参考にしています。
 
 ##ライセンス・クレジット
 
