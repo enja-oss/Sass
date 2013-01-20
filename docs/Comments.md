@@ -2,49 +2,36 @@
 
 ## コメント:: `/* */` と `//` {#comments}
 
-Sass supports standard multiline CSS comments with `/* */`,
-as well as single-line comments with `//`.
-The multiline comments are preserved in the CSS output where possible,
-while the single-line comments are removed.
-Sassは標準の`/* */`を用いた複数行のCSSコメント`/* */`も、`//`を用いた単一行のコメントもサポートしています。
-複数行コメントは出力されたCSSの中で可能なかぎり維持しますが、一方で単一行コメントは除かれます。
+SassはCSS標準の`/* */`を使った複数行コメントも、`//`を使った単一行のコメントもサポートしています。
+複数行コメントは可能であれば、出力されたCSSに保存されますが一方、単一行コメントは削除されます。
 
 例:
 
-    /* This comment is
-     * several lines long.
-     * since it uses the CSS comment syntax,
-     * it will appear in the CSS output. */
-    /* このコメントは
-     * 数行に渡ります。
-     * これはCSSコメントの構文として使われるので、
-     * 出力されるCSSに出現します。 */
-    body { color: black; }
+```scss
+/* このコメントは
+ * 数行に渡ります。
+ * CSSコメントの構文を使っているので、
+ * 出力されたCSSに表示されます。 */
+body { color: black; }
 
-    // These comments are only one line long each.
-    // They won't appear in the CSS output,
-    // since they use the single-line comment syntax.
-    // これらのコメントは各一行だけです。
-    // これは単一行コメントの構文として使われるので、
-    // 出力されるCSSに出現しません。
-    a { color: green; }
+// これらのコメントは各一行だけです。
+// 単一行コメントの構文を使っているので、
+// 出力されるCSSには表示されません。
+a { color: green; }
+```
 
 コンパイル結果:
 
-    /* This comment is
-     * several lines long.
-     * since it uses the CSS comment syntax,
-     * it will appear in the CSS output. */
-    /* このコメントは
-     * 数行に渡ります。
-     * これはCSSコメントの構文として使われるので、
-     * 出力されるCSSに出現します。 */
-    body {
-      color: black; }
+```css
+/* このコメントは
+ * 数行に渡ります。
+ * これはCSSコメントの構文として使われるので、
+ * 出力されるCSSに出現します。 */
+body {
+  color: black; }
 
-    a {
-      color: green; }
+a {
+  color: green; }
+```
 
-When the first letter of a comment is `!`, the comment will be interpolated
-and always rendered into css output even in compressed output modes. This is useful for adding Copyright notices to your generated CSS.
 コメントの一文字目を`!`にした時は、compressedモードでCSSが出力する場合でもそのコメントは差し込まれ、常にレンダリングされます。これは生成したCSS内にコピーライト表示を追加したい場合に役立ちます。
