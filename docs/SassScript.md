@@ -34,6 +34,8 @@ prompt, enter any legal SassScript expression to have it evaluated
 and the result printed out for you:
 
 対話式シェルを利用することで簡単にSassスクリプトの実験ができます。
+シェルを起動させるにはコマンドラインで `-i` をつけてsassを実行します。
+プロンプトが表示されたら、実行して結果を出力する規定されたSassスクリプト構文をどれでも入力します
 
     $ sass -i
     >> "Hello, Sassy World!"
