@@ -49,14 +49,21 @@ and the result printed out for you:
 
 ### Variables: `$` {#variables_}
 
+### 変数: `$` {#variables_}
+
 The most straightforward way to use SassScript
 is to use variables.
 Variables begin with dollar signs,
 and are set like CSS properties:
 
+Sassスクリプトのもっとも簡単な利用法は変数を使うことです。
+変数はドルマークから始まり、CSSプロパティのようにセットされます。
+
     $width: 5em;
 
 You can then refer to them in properties:
+
+それらはプロパティの中で参照できます。
 
     #main {
       width: $width;
@@ -67,13 +74,25 @@ where they're defined.
 If they're defined outside of any nested selectors,
 they're available everywhere.
 
+変数は、定義を行ったネストされたセレクタのレベルの内側でのみ有効になります。
+すべてのネストされたセレクタの外側で定義されれば、その場所でも有効となります。
+
 Variables used to use the prefix character `!`;
 this still works, but it's deprecated and prints a warning.
 `$` is the recommended syntax.
 
+変数は接頭辞として `!` が利用されました；
+これは今も動きますが、非推奨で警告が出力されます。
+`$` が推奨された記述です。
+
 Variables also used to be defined with `=` rather than `:`;
 this still works, but it's deprecated and prints a warning.
 `:` is the recommended syntax.
+
+変数は `:` よりもむしろ `=` が定義時に利用されました；
+これは今も動きますが、非推奨で警告が出力されます。
+`:` が推奨された記述です。
+
 
 ### Data Types
 
