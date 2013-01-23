@@ -2,22 +2,38 @@
 
 ## SassScript [原文](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#sassscript)
 
+## Sassスクリプト [原文](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#sassscript)
+
+
 In addition to the plain CSS property syntax,
 Sass supports a small set of extensions called SassScript.
 SassScript allows properties to use
 variables, arithmetic, and extra functions.
 SassScript can be used in any property value.
 
+プレーンなCSSプロパティの構文に加えることで、
+SassはSassスクリプトと呼ぶ小型の機能拡張群を扱うことができます。
+Sassスクリプトは、変数や計算そして追加機能をプロパティで利用できるようにしています。
+Sassスクリプトはあらゆるプロパティの値で利用することができます。
+
 SassScript can also be used to generate selectors and property names,
 which is useful when writing [mixins](#mixins).
 This is done via [interpolation](#interpolation_).
 
+Sassスクリプトは、セレクタやプロパティ名を生成するときにも利用でき、
+それらは[ミックスイン](#mixins)を記述するときに有用です。
+これは[補間](#interpolation_)によって行われます。
+
 ### Interactive Shell
+
+### 対話式シェル
 
 You can easily experiment with SassScript using the interactive shell.
 To launch the shell run the sass command-line with the `-i` option. At the
 prompt, enter any legal SassScript expression to have it evaluated
 and the result printed out for you:
+
+対話式シェルを利用することで簡単にSassスクリプトの実験ができます。
 
     $ sass -i
     >> "Hello, Sassy World!"
