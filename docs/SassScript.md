@@ -96,7 +96,11 @@ this still works, but it's deprecated and prints a warning.
 
 ### Data Types
 
+### データタイプ
+
 SassScript supports six main data types:
+
+Sassスクリプトは6つの主なデータータイプをサポートしています：
 
 * numbers (e.g. `1.2`, `13`, `10px`)
 * strings of text, with and without quotes (e.g. `"foo"`, `'bar'`, `baz`)
@@ -105,10 +109,21 @@ SassScript supports six main data types:
 * nulls (e.g. `null`)
 * lists of values, separated by spaces or commas (e.g. `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
 
+* 数値型 (例 `1.2`, `13`, `10px`)
+* 文字型、クオートはあり・なしどちらでも(例 `"foo"`, `'bar'`, `baz`)
+* 色 (例 `blue`, `#04a3f9`, `rgba(255, 0, 0, 0.5)`)
+* ブール値 (例 `true`, `false`)
+* null値 (例 `null`)
+* 値のリスト、スペースかカンマで区切られます (例 `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
+
 SassScript also supports all other types of CSS property value,
 such as Unicode ranges and `!important` declarations.
 However, it has no special handling for these types.
 They're treated just like unquoted strings.
+
+Sassスクリプトは、その他にユニコードの範囲内の文字や `!important` 宣言といった全てのCSSのプロパティの値をサポートします。
+どういう形であれ、これらの処理に対して特別な処理は必要ありません。
+これらはちゃんとクオートされていない文字として扱われます。
 
 #### Strings {#sass-script-strings}
 
