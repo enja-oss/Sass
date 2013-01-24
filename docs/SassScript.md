@@ -109,8 +109,8 @@ Sassスクリプトは6つの主なデータータイプをサポートしてい
 * nulls (e.g. `null`)
 * lists of values, separated by spaces or commas (e.g. `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
 
-* 数値型 (例 `1.2`, `13`, `10px`)
-* 文字型、クオートはあり・なしどちらでも(例 `"foo"`, `'bar'`, `baz`)
+* 数値 (例 `1.2`, `13`, `10px`)
+* 文字列、クオートはあり・なしどちらでも(例 `"foo"`, `'bar'`, `baz`)
 * 色 (例 `blue`, `#04a3f9`, `rgba(255, 0, 0, 0.5)`)
 * ブール値 (例 `true`, `false`)
 * null値 (例 `null`)
@@ -127,6 +127,8 @@ Sassスクリプトは、その他にユニコードの範囲内の文字や `!i
 
 #### Strings {#sass-script-strings}
 
+#### 文字列 {#sass-script-strings}
+
 CSS specifies two kinds of strings: those with quotes,
 such as `"Lucida Grande"` or `'http://sass-lang.com'`,
 and those without quotes, such as `sans-serif` or `bold`.
@@ -134,11 +136,24 @@ SassScript recognizes both kinds,
 and in general if one kind of string is used in the Sass document,
 that kind of string will be used in the resulting CSS.
 
+CSSでは2通りの文字列が規定されています：
+`"Lucida Grande"` や `'http://sass-lang.com'` のようにクオートがついているものと、
+`sans-serif` や `bold` のようにクオートがつかないものです。
+Sassスクリプトではどちらも認識します、
+また一般的にはSassの文書の中で片方のタイプの文字列が利用された場合には、
+出力したCSSでのそのタイプの文字列が適用されます。
+
 There is one exception to this, though:
 when using [`#{}` interpolation](#interpolation_),
 quoted strings are unquoted.
 This makes it easier to use e.g. selector names in [mixins](#mixins).
 For example:
+
+とはいえ、一つ例外があります：
+[`#{}` 補間](#interpolation_)を利用した場合には、
+クオートされた文字列はクオートが取り除かれます。
+これは[ミックスイン](#mixins)でのセレクタ名などを扱うのを容易にします。
+例えば：
 
     @mixin firefox-message($selector) {
       body.firefox #{$selector}:before {
@@ -150,12 +165,18 @@ For example:
 
 is compiled to:
 
+は以下にコンパイルされます：
+
     body.firefox .header:before {
       content: "Hi, Firefox users!"; }
 
 It's also worth noting that when using the [deprecated `=` property syntax](#sassscript),
 all strings are interpreted as unquoted,
 regardless of whether or not they're written with quotes.
+
+これは[非推奨である `=` のプロパティ構文](#sassscript)を利用した場合にも注意する必要があり、
+全ての文字列はクオートが記述されているかどうかにかかわらず、
+クオートされていないものとして扱われます。
 
 #### Lists
 
