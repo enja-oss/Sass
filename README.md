@@ -49,12 +49,4 @@ LICENSE-MIT を参照してください。
 
 ##翻訳参加者
 
-随時追加しています。
-
-* [@hokaccha](https://github.com/hokaccha) (管理者)
-* [@mitsuruog](https://github.com/mitsuruog) (管理者)
-* [@t32k](https://github.com/t32k) (管理者)
-* [@tokuda109](https://github.com/tokuda109)
-* [@Layzie](https://github.com/Layzie) (管理者・監訳者)
-* [@mazzo46](https://github.com/mazzo46) FAQ,Output Style,Extending Sass
-* [@hiloki](https://github.com/hiloki)
+[Wiki](https://github.com/enja-oss/Sass/wiki/%E7%BF%BB%E8%A8%B3%E5%8F%82%E5%8A%A0%E8%80%85)を参照してください。
