@@ -19,6 +19,10 @@ Google Groupなどを使った連絡についても検討しましたが、GitHu
 これらに関して詳しくは[こちらを参照してください](https://github.com/enja-oss/README/wiki/Review-and-Pull-Request-Flow)。
 特に監訳を依頼する予定の方は必ず目を通しておいてください。
 
+本プロジェクトでは、 @myakura と @Layzie の二人が監訳者です。監訳を希望する方はこの二人に@マーク付きで監訳依頼をおこなってください。
+
+例: @myakura @Layzie 監訳お願いします。
+
 **また翻訳に慣れている方は是非、[監訳者リストに記入してください](https://github.com/enja-oss/README/issues/5)。**
 
 ## 書式ガイド
