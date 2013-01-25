@@ -321,17 +321,31 @@ it must support this, while also allowing `/` to be used for division.
 This means that by default, if two numbers are separated by `/` in SassScript,
 then they will appear that way in the resulting CSS.
 
-
+CSSはプロパティの値で数値の区切りとして`/`が利用されています。
+SassスクリプトはCSSのプロパティ構文の拡張なので、
+これに対応する必要がありますが、一方で割り算で`/`が利用できるようにもしています。
+というわけでデフォルトでは、Sassスクリプトで2つの数字が`/`で区切られていた場合、
+結果としてCSSのやり方で出力されることを意味します。
 
 However, there are three situations where the `/` will be interpreted as division.
 These cover the vast majority of cases where division is actually used.
 They are:
 
+しかしながら、3つの条件下においては`/`は割り算として解釈されます。
+その条件は割り算が実際に使用される大部分のケースを対象としています。
+それは：
+
 1. If the value, or any part of it, is stored in a variable.
 2. If the value is surrounded by parentheses.
 3. If the value is used as part of another arithmetic expression.
 
+1. 値、もしくはその一部が変数に保持されているとき
+2. 値がカッコで囲まれているとき
+3. 値が四則演算の一部に存在しているとき
+
 For example:
+
+例えば：
 
     p {
       font: 10px/8px;             // Plain CSS, no division
@@ -343,6 +357,8 @@ For example:
 
 is compiled to:
 
+は以下のようにコンパイルされます：
+
     p {
       font: 10px/8px;
       width: 500px;
@@ -353,6 +369,10 @@ If you want to use variables along with a plain CSS `/`,
 you can use `#{}` to insert them.
 For example:
 
+もし、CSSの`/`と一緒に変数を利用したい場合は、
+挿入するときに`#{}`を利用できます。
+例えば：
+
     p {
       $font-size: 12px;
       $line-height: 30px;
@@ -360,6 +380,8 @@ For example:
     }
 
 is compiled to:
+
+は、以下のようにコンパイルされます：
 
     p {
       font: 12px/30px; }
