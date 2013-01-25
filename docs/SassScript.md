@@ -269,20 +269,27 @@ All types support equality operations (`==` and `!=`).
 In addition, each type has its own operations
 that it has special support for.
 
-どのタイプも等値演算(`==` and `!=`)をサポートしています。
-さらに、それぞれのタイプに、独自にサポートしている演算があります。
+どの変数型も等値演算(`==` and `!=`)をサポートしています。
+さらに、それぞれに独自にサポートしている演算があります。
 
 #### Number Operations
+
+#### 数値演算
 
 SassScript supports the standard arithmetic operations on numbers
 (`+`, `-`, `*`, `/`, `%`),
 and will automatically convert between units if it can:
+
+Sassスクリプトは数値型では基本的な四則演算をサポートしています、
+さらに可能であれば異なる単位のものでも自動的に変換します：
 
     p {
       width: 1in + 8pt;
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます：
 
     p {
       width: 1.111in; }
@@ -294,7 +301,17 @@ and equality operators
 (`==`, `!=`)
 are supported for all types.
 
+関係演算子
+(`<`, `>`, `<=`, `>=`)
+も数値型でサポートされますし、
+等値演算
+(`==`, `!=`)
+も全ての変数型でサポートされます。
+
 ##### Division and `/`
+{#division-and-slash}
+
+##### 割り算と `/`
 {#division-and-slash}
 
 CSS allows `/` to appear in property values
@@ -303,6 +320,8 @@ Since SassScript is an extension of the CSS property syntax,
 it must support this, while also allowing `/` to be used for division.
 This means that by default, if two numbers are separated by `/` in SassScript,
 then they will appear that way in the resulting CSS.
+
+
 
 However, there are three situations where the `/` will be interpreted as division.
 These cover the vast majority of cases where division is actually used.
