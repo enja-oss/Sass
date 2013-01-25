@@ -263,9 +263,14 @@ CSSに置き換えられる前に排除されます。
 
 ### Operations
 
+### 演算
+
 All types support equality operations (`==` and `!=`).
 In addition, each type has its own operations
 that it has special support for.
+
+どのタイプも等値演算(`==` and `!=`)をサポートしています。
+さらに、それぞれのタイプに、独自にサポートしている演算があります。
 
 #### Number Operations
 
