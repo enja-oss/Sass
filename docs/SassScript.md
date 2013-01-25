@@ -180,10 +180,16 @@ regardless of whether or not they're written with quotes.
 
 #### Lists
 
+#### リスト
+
 Lists are how Sass represents the values of CSS declarations
 like `margin: 10px 15px 0 0` or `font-face: Helvetica, Arial, sans-serif`.
 Lists are just a series of other values, separated by either spaces or commas.
 In fact, individual values count as lists, too: they're just lists with one item.
+
+リストは `margin: 10px 15px 0 0` や `font-face: Helvetica, Arial, sans-serif` のようなCSSの定義の値を表す方法です。
+リストは、他とスペースかカンマどちらかで区切られた値のセットそのものです。
+実際には、ここの値もリストとしてカウントします：それらはひとつの要素しかもたないリストとなります。
 
 On their own, lists don't do much,
 but the [Sass list functions](Sass/Script/Functions.html#list-functions)
@@ -192,6 +198,13 @@ The {Sass::Script::Functions#nth nth function} can access items in a list,
 the {Sass::Script::Functions#join join function} can join multiple lists together,
 and the {Sass::Script::Functions#append append function} can add items to lists.
 The [`@each` rule](#each-directive) can also add styles for each item in a list.
+
+リスト自体はそれほど何かをするというわけではありません、
+しかし[Sassのリスト機能](Sass/Script/Functions.html#list-functions)で、実用的になります。
+{Sass::Script::Functions#nth nth function} はリストの項目にアクセスできますし、
+{Sass::Script::Functions#join join function} は複数のリストを一つに結合できます、
+また、 {Sass::Script::Functions#append append function} はリストに項目を追加できます。
+[`@each` ルール](#each-directive)はリストのそれぞれの項目にスタイルの追加もできます。
 
 In addition to containing simple values, lists can contain other lists.
 For example, `1px 2px, 5px 6px` is a two-item list
@@ -204,6 +217,16 @@ containing the list `1px 2px` and the list `5px 6px`.
 The difference is that the outer list is space-separated,
 where before it was comma-separated.
 
+リストはシンプルな値を内包していることに加えて、他のリストを含めることもできます。
+例えば、 `1px 2px, 5px 6px` は、
+`1px 2px` のリストと `5px 6px` のリストを内包した、2つの項目のリストとなります。
+もし、内部のリストと外側のリストが同じ区切り文字だった場合は、
+内部のリストの最初と最後にカッコをつけて明示する必要があります。
+例えば、 `(1px 2px) (5px 6px)` は、
+ `1px 2px` のリストと `5px 6px` のリストを内包した、2つの項目のリストとなります。
+この違いは、外側のリストが先ほどカンマで区切られていたリストが、
+スペースで区切られていることです。
+
 When lists are turned into plain CSS, Sass doesn't add any parentheses,
 since CSS doesn't understand them.
 That means that `(1px 2px) (5px 6px)` and `1px 2px 5px 6px`
@@ -211,6 +234,14 @@ will look the same when they become CSS.
 However, they aren't the same when they're Sass:
 the first is a list containing two lists,
 while the second is a list containing four numbers.
+
+リストがCSSに置き換えられるときには、
+CSSでは解釈されないので、Sassはカッコを入れることはありません。
+それは、`(1px 2px) (5px 6px)` と `1px 2px 5px 6px` は、
+CSSになったときには同じものに見えることを意味します。
+しかしながら、それらはSassにおいては同じというわけではありません：
+前者は2つのリストを内包したリストであり、
+一方後者は4つの数字を内包したリストです。
 
 Lists can also have no items in them at all.
 These lists are represented as `()`.
@@ -220,6 +251,15 @@ If a list contains empty lists or null values,
 as in `1px 2px () 3px` or `1px 2px null 3px`,
 the empty lists and null values will be removed
 before the containing list is turned into CSS.
+
+リストはひとつも値を持たないということもできます。
+そのようなリストは `()` で表されます。
+それらは直接CSSに出力されません；
+もし、例えば  `font-family: ()` を試した場合、Sassはエラーを発生させます。
+もしリストが、`1px 2px () 3px` または `1px 2px null 3px` といった
+空のリストやヌル値を内包する場合、
+空のリストやヌル値は、内包しているリストが
+CSSに置き換えられる前に排除されます。
 
 ### Operations
 
