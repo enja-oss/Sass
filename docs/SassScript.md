@@ -388,11 +388,19 @@ is compiled to:
 
 #### Color Operations
 
+#### 色の演算
+
 All arithmetic operations are supported for color values,
 where they work piecewise.
 This means that the operation is performed
 on the red, green, and blue components in turn.
 For example:
+
+全ての四則演算は切り分けて動作することで、
+色の値も対象にしています。
+これは、順番に赤、緑、青の要素ごとに
+計算するという意味です。
+例えば：
 
     p {
       color: #010203 + #040506;
@@ -401,15 +409,25 @@ For example:
 computes `01 + 04 = 05`, `02 + 05 = 07`, and `03 + 06 = 09`,
 and is compiled to:
 
+は`01 + 04 = 05`、`02 + 05 = 07`そして`03 + 06 = 09`と計算し、
+以下のようにコンパイルします：
+
     p {
       color: #050709; }
 
 Often it's more useful to use {Sass::Script::Functions color functions}
 than to try to use color arithmetic to achieve the same effect.
 
+度々、{Sass::Script::Functions color functions}を利用するほうが、
+色演算で同じ効果を出そうとするよりも有益なことがあります。
+
 Arithmetic operations also work between numbers and colors,
 also piecewise.
 For example:
+
+四則演算は色の値と数値の間でも動作します、
+こちらも切り分けます。
+例えば：
 
     p {
       color: #010203 * 2;
@@ -417,6 +435,9 @@ For example:
 
 computes `01 * 2 = 02`, `02 * 2 = 04`, and `03 * 2 = 06`,
 and is compiled to:
+
+は`01 * 2 = 02`、`02 * 2 = 04`そして`03 * 2 = 06`と計算し、
+以下のようにコンパイルします：
 
     p {
       color: #020406; }
@@ -429,11 +450,19 @@ to be done with them.
 The arithmetic doesn't affect the alpha value.
 For example:
 
+注意点としては、( {Sass::Script::Functions#rgba rgba}
+または{Sass::Script::Functions#hsla hsla}機能で生成された)アルファチャンネル
+を含む色の値で四則演算を行う場合、アルファの値は同じである必要があります。
+演算はアルファの値には作用しません。
+例えば：
+
     p {
       color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます。
 
     p {
       color: rgba(255, 255, 0, 0.75); }
@@ -443,6 +472,11 @@ The alpha channel of a color can be adjusted using the
 {Sass::Script::Functions#transparentize transparentize} functions.
 For example:
 
+アルファチャンネルは{Sass::Script::Functions#opacify opacify}と
+{Sass::Script::Functions#transparentize transparentize}の機能を利用して
+調整されます。
+例えば：
+
     $translucent-red: rgba(255, 0, 0, 0.5);
     p {
       color: opacify($translucent-red, 0.3);
@@ -450,6 +484,7 @@ For example:
     }
 
 is compiled to:
+は以下のようにコンパイルされます。
 
     p {
       color: rgba(255, 0, 0, 0.9);
@@ -461,6 +496,12 @@ color using the {Sass::Script::Functions#ie_hex_str ie_hex_str}
 function.
 For example:
 
+IEのフィルターは全色がアルファレイヤーに含まれる必要があります、
+そして#AABBCCDDの厳密な書式になります。
+{Sass::Script::Functions#ie_hex_str ie_hex_str}機能を利用することで
+より簡易に色の変換を行えます。
+例えば：
+
     $translucent-red: rgba(255, 0, 0, 0.5);
     $green: #00ff00;
     div {
@@ -468,6 +509,8 @@ For example:
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます。
 
     div {
       filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=#FF00FF00, endColorstr=#80FF0000);
