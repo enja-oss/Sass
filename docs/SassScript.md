@@ -62,7 +62,7 @@ Sassスクリプトのもっとも簡単な利用法は変数を使うことで�
 変数はドルマークから始まり、CSSプロパティのようにセットされます：
 
 ```sass
-    $width: 5em;
+$width: 5em;
 ```
 
 You can then refer to them in properties:
@@ -70,9 +70,9 @@ You can then refer to them in properties:
 それらはプロパティの中で参照できます：
 
 ```sass
-    #main {
-      width: $width;
-    }
+#main {
+  width: $width;
+}
 ```
 
 Variables are only available within the level of nested selectors
