@@ -355,6 +355,7 @@ They are:
 2. If the value is surrounded by parentheses.
 3. If the value is used as part of another arithmetic expression.
 
+
 1. 値、もしくはその一部が変数に保持されているとき
 2. 値がカッコで囲まれているとき
 3. 値が四則演算の一部に存在しているとき
