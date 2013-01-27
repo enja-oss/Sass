@@ -37,7 +37,8 @@ and the result printed out for you:
 シェルを起動させるにはコマンドラインで `-i` をつけてsassを実行します。
 プロンプトが表示されたら、実行して結果を出力する規定されたSassスクリプト構文をどれでも入力します：
 
-```$ sass -i
+```
+$ sass -i
 >> "Hello, Sassy World!"
 "Hello, Sassy World!"
 >> 1px + 1px + 1px
