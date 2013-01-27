@@ -45,7 +45,8 @@ and the result printed out for you:
 >> #777 + #777
 #eeeeee
 >> #777 + #888
-white```
+white
+```
 
 ### Variables: `$` {#variables_}
 
