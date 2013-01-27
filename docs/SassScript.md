@@ -518,13 +518,19 @@ is compiled to:
 
 #### String Operations
 
+#### 文字列演算
+
 The `+` operation can be used to concatenate strings:
+
+`+` の演算は文字列の連結に利用できます:
 
     p {
       cursor: e + -resize;
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます。
 
     p {
       cursor: e-resize; }
@@ -537,12 +543,21 @@ Likewise, if an unquoted string is added to a quoted string
 the result is an unquoted string.
 For example:
 
+注意点としては、もしクオートされた文字列にクオートされていない文字列が追加された場合、
+（`+`の左側がクオートされた文字列）
+演算の結果はクオートされた文字列になります。
+同様に、もしクオートされていない文字列にクオートされた文字列が追加された場合、
+（`+`の左側がクオートされていない文字列）
+演算の結果はクオートされていない文字列になります。
+例えば：
+
     p:before {
       content: "Foo " + Bar;
       font-family: sans- + "serif";
     }
 
 is compiled to:
+は以下のようにコンパイルされます。
 
     p:before {
       content: "Foo Bar";
@@ -551,11 +566,16 @@ is compiled to:
 By default, if two values are placed next to one another,
 they are concatenated with a space:
 
+デフォルトでは、2つの値が他の値に続いている時、
+スペースで連結されます：
+
     p {
       margin: 3px + 4px auto;
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます。
 
     p {
       margin: 7px auto; }
@@ -563,16 +583,23 @@ is compiled to:
 Within a string of text, #{} style interpolation can be used to
 place dynamic values within the string:
 
+テキストの文字列の中では、#{}スタイルの補間は
+文字列の中で直接値として利用できます：
+
     p:before {
       content: "I ate #{5 + 10} pies!";
     }
 
 is compiled to:
 
+は以下のようにコンパイルされます。
+
     p:before {
       content: "I ate 15 pies!"; }
 
 Null values are treated as empty strings for string interpolation:
+
+ヌル値は文字列補間で空文字として扱われます：
 
     $value: null;
     p:before {
@@ -580,6 +607,8 @@ Null values are treated as empty strings for string interpolation:
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます。
 
     p:before {
       content: "I ate  pies!"; }
