@@ -35,7 +35,7 @@ and the result printed out for you:
 
 対話式シェルを利用することで簡単にSassスクリプトの実験ができます。
 シェルを起動させるにはコマンドラインで `-i` をつけてsassを実行します。
-プロンプトが表示されたら、実行して結果を出力する規定されたSassスクリプト構文をどれでも入力します
+プロンプトが表示されたら、実行して結果を出力する規定されたSassスクリプト構文をどれでも入力します：
 
     $ sass -i
     >> "Hello, Sassy World!"
@@ -57,13 +57,13 @@ Variables begin with dollar signs,
 and are set like CSS properties:
 
 Sassスクリプトのもっとも簡単な利用法は変数を使うことです。
-変数はドルマークから始まり、CSSプロパティのようにセットされます。
+変数はドルマークから始まり、CSSプロパティのようにセットされます：
 
     $width: 5em;
 
 You can then refer to them in properties:
 
-それらはプロパティの中で参照できます。
+それらはプロパティの中で参照できます：
 
     #main {
       width: $width;
@@ -81,17 +81,17 @@ Variables used to use the prefix character `!`;
 this still works, but it's deprecated and prints a warning.
 `$` is the recommended syntax.
 
-変数は接頭辞として `!` が利用されました；
+変数は接頭辞として`!`が利用されました；
 これは今も動きますが、非推奨で警告が出力されます。
-`$` が推奨された記述です。
+`$`が推奨された記述です。
 
 Variables also used to be defined with `=` rather than `:`;
 this still works, but it's deprecated and prints a warning.
 `:` is the recommended syntax.
 
-変数は `:` よりもむしろ `=` が定義時に利用されました；
+変数は`:`よりもむしろ`=`が定義時に利用されました；
 これは今も動きますが、非推奨で警告が出力されます。
-`:` が推奨された記述です。
+`:`が推奨された記述です。
 
 
 ### Data Types
@@ -110,7 +110,7 @@ Sassスクリプトは6つの主なデータータイプをサポートしてい
 * lists of values, separated by spaces or commas (e.g. `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
 
 * 数値 (例 `1.2`, `13`, `10px`)
-* 文字列、クオートはあり・なしどちらでも(例 `"foo"`, `'bar'`, `baz`)
+* 文字列、クオートはありなしどちらでも(例 `"foo"`, `'bar'`, `baz`)
 * 色 (例 `blue`, `#04a3f9`, `rgba(255, 0, 0, 0.5)`)
 * ブール値 (例 `true`, `false`)
 * null値 (例 `null`)
@@ -121,8 +121,9 @@ such as Unicode ranges and `!important` declarations.
 However, it has no special handling for these types.
 They're treated just like unquoted strings.
 
-Sassスクリプトは、その他にユニコードの範囲内の文字や `!important` 宣言といった全てのCSSのプロパティの値をサポートします。
-どういう形であれ、これらの処理に対して特別な処理は必要ありません。
+Sassスクリプトは、その他にもユニコードの範囲内の文字や
+`!important`宣言といった全てのCSSのプロパティの値のタイプをサポートします。
+どういう形であれ、これらに対して特別な対応は必要ありません。
 これらはちゃんとクオートされていない文字として扱われます。
 
 #### Strings {#sass-script-strings}
@@ -137,11 +138,11 @@ and in general if one kind of string is used in the Sass document,
 that kind of string will be used in the resulting CSS.
 
 CSSでは2通りの文字列が規定されています：
-`"Lucida Grande"` や `'http://sass-lang.com'` のようにクオートがついているものと、
-`sans-serif` や `bold` のようにクオートがつかないものです。
+`"Lucida Grande"`や`'http://sass-lang.com'`のようにクオートがついているものと、
+`sans-serif`や`bold`のようにクオートがつかないものです。
 Sassスクリプトではどちらも認識します、
 また一般的にはSassの文書の中で片方のタイプの文字列が利用された場合には、
-出力したCSSでのそのタイプの文字列が適用されます。
+出力したCSSでもそのタイプの文字列が適用されます。
 
 There is one exception to this, though:
 when using [`#{}` interpolation](#interpolation_),
@@ -187,7 +188,7 @@ like `margin: 10px 15px 0 0` or `font-face: Helvetica, Arial, sans-serif`.
 Lists are just a series of other values, separated by either spaces or commas.
 In fact, individual values count as lists, too: they're just lists with one item.
 
-リストは `margin: 10px 15px 0 0` や `font-face: Helvetica, Arial, sans-serif` のようなCSSの定義の値を表す方法です。
+リストは`margin: 10px 15px 0 0`や`font-face: Helvetica, Arial, sans-serif`のようなCSSの定義の値を表す方法です。
 リストは、他とスペースかカンマどちらかで区切られた値のセットそのものです。
 実際には、ここの値もリストとしてカウントします：それらはひとつの要素しかもたないリストとなります。
 
@@ -201,9 +202,9 @@ The [`@each` rule](#each-directive) can also add styles for each item in a list.
 
 リスト自体はそれほど何かをするというわけではありません、
 しかし[Sassのリスト機能](Sass/Script/Functions.html#list-functions)で、実用的になります。
-{Sass::Script::Functions#nth nth function} はリストの項目にアクセスできますし、
-{Sass::Script::Functions#join join function} は複数のリストを一つに結合できます、
-また、 {Sass::Script::Functions#append append function} はリストに項目を追加できます。
+{Sass::Script::Functions#nth nth function}はリストの項目にアクセスできますし、
+{Sass::Script::Functions#join join function}は複数のリストを一つに結合できます、
+また、{Sass::Script::Functions#append append function}はリストに項目を追加できます。
 [`@each` ルール](#each-directive)はリストのそれぞれの項目にスタイルの追加もできます。
 
 In addition to containing simple values, lists can contain other lists.
@@ -218,12 +219,12 @@ The difference is that the outer list is space-separated,
 where before it was comma-separated.
 
 リストはシンプルな値を内包していることに加えて、他のリストを含めることもできます。
-例えば、 `1px 2px, 5px 6px` は、
-`1px 2px` のリストと `5px 6px` のリストを内包した、2つの項目のリストとなります。
+例えば、`1px 2px, 5px 6px`は、
+`1px 2px`のリストと`5px 6px`のリストを内包した、2つの項目のリストとなります。
 もし、内部のリストと外側のリストが同じ区切り文字だった場合は、
 内部のリストの最初と最後にカッコをつけて明示する必要があります。
-例えば、 `(1px 2px) (5px 6px)` は、
- `1px 2px` のリストと `5px 6px` のリストを内包した、2つの項目のリストとなります。
+例えば、`(1px 2px) (5px 6px)`は、
+`1px 2px`のリストと`5px 6px`のリストを内包した、2つの項目のリストとなります。
 この違いは、外側のリストが先ほどカンマで区切られていたリストが、
 スペースで区切られていることです。
 
@@ -237,7 +238,7 @@ while the second is a list containing four numbers.
 
 リストがCSSに置き換えられるときには、
 CSSでは解釈されないので、Sassはカッコを入れることはありません。
-それは、`(1px 2px) (5px 6px)` と `1px 2px 5px 6px` は、
+それは、`(1px 2px) (5px 6px)`と`1px 2px 5px 6px`は、
 CSSになったときには同じものに見えることを意味します。
 しかしながら、それらはSassにおいては同じというわけではありません：
 前者は2つのリストを内包したリストであり、
@@ -253,10 +254,10 @@ the empty lists and null values will be removed
 before the containing list is turned into CSS.
 
 リストはひとつも値を持たないということもできます。
-そのようなリストは `()` で表されます。
+そのようなリストは`()`で表されます。
 それらは直接CSSに出力されません；
-もし、例えば  `font-family: ()` を試した場合、Sassはエラーを発生させます。
-もしリストが、`1px 2px () 3px` または `1px 2px null 3px` といった
+もし、例えば  `font-family: ()`を試した場合、Sassはエラーを発生させます。
+もしリストが、`1px 2px () 3px`または`1px 2px null 3px`といった
 空のリストやヌル値を内包する場合、
 空のリストやヌル値は、内包しているリストが
 CSSに置き換えられる前に排除されます。
@@ -281,7 +282,8 @@ SassScript supports the standard arithmetic operations on numbers
 and will automatically convert between units if it can:
 
 Sassスクリプトは数値型では基本的な四則演算をサポートしています、
-さらに可能であれば異なる単位のものでも自動的に変換します：
+(`+`, `-`, `*`, `/`, `%`)
+さらに演算が可能であれば異なる単位のものでも自動的に変換します：
 
     p {
       width: 1in + 8pt;
