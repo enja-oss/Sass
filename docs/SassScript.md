@@ -115,12 +115,12 @@ Sassスクリプトは6つの主なデータータイプをサポートしてい
 * nulls (e.g. `null`)
 * lists of values, separated by spaces or commas (e.g. `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
 
-- 数値 (例 `1.2`, `13`, `10px`)
-- 文字列、クオートはありなしどちらでも(例 `"foo"`, `'bar'`, `baz`)
-- 色 (例 `blue`, `#04a3f9`, `rgba(255, 0, 0, 0.5)`)
-- ブール値 (例 `true`, `false`)
-- null値 (例 `null`)
-- 値のリスト、スペースかカンマで区切られます (例 `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
+* 数値 (例 `1.2`, `13`, `10px`)
+* 文字列、クオートはありなしどちらでも(例 `"foo"`, `'bar'`, `baz`)
+* 色 (例 `blue`, `#04a3f9`, `rgba(255, 0, 0, 0.5)`)
+* ブール値 (例 `true`, `false`)
+* null値 (例 `null`)
+* 値のリスト、スペースかカンマで区切られます (例 `1.5em 1em 0 2em`, `Helvetica, Arial, sans-serif`)
 
 SassScript also supports all other types of CSS property value,
 such as Unicode ranges and `!important` declarations.
