@@ -657,8 +657,13 @@ is compiled to:
 
 ### Functions
 
+### 関数
+
 SassScript defines some useful functions
 that are called using the normal CSS function syntax:
+
+Sassスクリプトは通常のCSSの記法で利用できる
+有用な関数をいくつか定義しています。
 
     p {
       color: hsl(0, 100%, 50%);
@@ -666,13 +671,20 @@ that are called using the normal CSS function syntax:
 
 is compiled to:
 
+は以下のようにコンパイルされます：
+
     p {
       color: #ff0000; }
 
 #### Keyword Arguments
 
+#### キーワード引数
+
 Sass functions can also be called using explicit keyword arguments.
 The above example can also be written as:
+
+Sassの関数は明示的にキーワード引数を使うことでも呼び出せます。
+先ほどの例はこのようにも記述できます：
 
     p {
       color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
@@ -682,11 +694,23 @@ While this is less concise, it can make the stylesheet easier to read.
 It also allows functions to present more flexible interfaces,
 providing many arguments without becoming difficult to call.
 
+これは簡潔ではない一方で、スタイルシートを読みやすくしてくれます。
+関数はより呼び出しが難しくなるようなこともなく多くの引数を扱える、
+柔軟なインターフェースも提供しています。
+
 Named arguments can be passed in any order, and arguments with default values can be omitted.
 Since the named arguments are variable names, underscores and dashes can be used interchangeably.
 
+名前付きの引数は任意の順番で渡すことができ、デフォルトの値の引数を省略することができます。
+名前付き引数は変数名なので、アンダースコアとダッシュ（ハイフン）を交互に使用できます。
+
 See {Sass::Script::Functions} for a full listing of Sass functions and their argument names,
 as well as instructions on defining your own in Ruby.
+
+にSass関数とその名前付き引数の全てのリストがありますので、
+自分でRuby内で定義した命令と同様に、{Sass::Script::Functions}を把握してください。
+
+{Sass::Script::Functions}
 
 ### Interpolation: `#{}` {#interpolation_}
 
