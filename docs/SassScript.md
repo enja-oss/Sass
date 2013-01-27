@@ -462,7 +462,7 @@ For example:
 
 is compiled to:
 
-は以下のようにコンパイルされます。
+は以下のようにコンパイルされます：
 
     p {
       color: rgba(255, 255, 0, 0.75); }
@@ -484,7 +484,8 @@ For example:
     }
 
 is compiled to:
-は以下のようにコンパイルされます。
+
+は以下のようにコンパイルされます：
 
     p {
       color: rgba(255, 0, 0, 0.9);
@@ -510,7 +511,7 @@ IEのフィルターは全色がアルファレイヤーに含まれる必要が
 
 is compiled to:
 
-は以下のようにコンパイルされます。
+は以下のようにコンパイルされます：
 
     div {
       filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=#FF00FF00, endColorstr=#80FF0000);
@@ -530,7 +531,7 @@ The `+` operation can be used to concatenate strings:
 
 is compiled to:
 
-は以下のようにコンパイルされます。
+は以下のようにコンパイルされます：
 
     p {
       cursor: e-resize; }
@@ -557,7 +558,8 @@ For example:
     }
 
 is compiled to:
-は以下のようにコンパイルされます。
+
+は以下のようにコンパイルされます：
 
     p:before {
       content: "Foo Bar";
@@ -575,7 +577,7 @@ they are concatenated with a space:
 
 is compiled to:
 
-は以下のようにコンパイルされます。
+は以下のようにコンパイルされます：
 
     p {
       margin: 7px auto; }
@@ -592,7 +594,7 @@ place dynamic values within the string:
 
 is compiled to:
 
-は以下のようにコンパイルされます。
+は以下のようにコンパイルされます：
 
     p:before {
       content: "I ate 15 pies!"; }
@@ -608,7 +610,7 @@ Null values are treated as empty strings for string interpolation:
 
 is compiled to:
 
-は以下のようにコンパイルされます。
+は以下のようにコンパイルされます：
 
     p:before {
       content: "I ate  pies!"; }
@@ -624,19 +626,31 @@ Sassスクリプトは、`and` `or` `not` 演算がブール値で利用でき�
 
 #### List Operations
 
+#### リスト演算
+
 Lists don't support any special operations.
 Instead, they're manipulated using the
 [list functions](Sass/Script/Functions.html#list-functions).
 
+リストは特殊な演算をサポートしていません。
+そのかわりに、[リスト機能](Sass/Script/Functions.html#list-functions)
+を利用することで操作できます。
+
 ### Parentheses
 
+### カッコ
+
 Parentheses can be used to affect the order of operations:
+
+カッコは演算の順序を操作することができます：
 
     p {
       width: 1em + (2em * 3);
     }
 
 is compiled to:
+
+以下のようにコンパイルされます：
 
     p {
       width: 7em; }
