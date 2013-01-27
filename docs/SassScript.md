@@ -615,8 +615,12 @@ is compiled to:
 
 #### Boolean Operations
 
+#### ブール値演算
+
 SassScript supports `and`, `or`, and `not` operators
 for boolean values.
+
+Sassスクリプトは、`and` `or` `not` 演算がブール値で利用できます。
 
 #### List Operations
 
