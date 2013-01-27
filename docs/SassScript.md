@@ -61,7 +61,7 @@ and are set like CSS properties:
 Sassスクリプトのもっとも簡単な利用法は変数を使うことです。
 変数はドルマークから始まり、CSSプロパティのようにセットされます：
 
-```sass
+```scss
 $width: 5em;
 ```
 
@@ -69,7 +69,7 @@ You can then refer to them in properties:
 
 それらはプロパティの中で参照できます：
 
-```sass
+```scss
 #main {
   width: $width;
 }
@@ -162,20 +162,24 @@ For example:
 これは[ミックスイン](#mixins)でのセレクタ名などを扱うのを容易にします。
 例えば：
 
-    @mixin firefox-message($selector) {
-      body.firefox #{$selector}:before {
-        content: "Hi, Firefox users!";
-      }
-    }
+```scss
+@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before {
+    content: "Hi, Firefox users!";
+  }
+}
 
-    @include firefox-message(".header");
+@include firefox-message(".header");
+```
 
 is compiled to:
 
 は以下にコンパイルされます：
 
-    body.firefox .header:before {
-      content: "Hi, Firefox users!"; }
+```css
+body.firefox .header:before {
+  content: "Hi, Firefox users!"; }
+```
 
 It's also worth noting that when using the [deprecated `=` property syntax](#sassscript),
 all strings are interpreted as unquoted,
@@ -291,16 +295,20 @@ Sassスクリプトは数値型では基本的な四則演算をサポートし�
 (`+`, `-`, `*`, `/`, `%`)
 さらに演算が可能であれば異なる単位のものでも自動的に変換します：
 
-    p {
-      width: 1in + 8pt;
-    }
+```scss
+p {
+  width: 1in + 8pt;
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      width: 1.111in; }
+```css
+p {
+  width: 1.111in; }
+```
 
 Relational operators
 (`<`, `>`, `<=`, `>=`)
@@ -355,23 +363,27 @@ For example:
 
 例えば：
 
-    p {
-      font: 10px/8px;             // Plain CSS, no division
-      $width: 1000px;
-      width: $width/2;            // Uses a variable, does division
-      height: (500px/2);          // Uses parentheses, does division
-      margin-left: 5px + 8px/2px; // Uses +, does division
-    }
+```scss
+p {
+  font: 10px/8px;             // Plain CSS, no division
+  $width: 1000px;
+  width: $width/2;            // Uses a variable, does division
+  height: (500px/2);          // Uses parentheses, does division
+  margin-left: 5px + 8px/2px; // Uses +, does division
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      font: 10px/8px;
-      width: 500px;
-      height: 250px;
-      margin-left: 9px; }
+```css
+p {
+  font: 10px/8px;
+  width: 500px;
+  height: 250px;
+  margin-left: 9px; }
+```
 
 If you want to use variables along with a plain CSS `/`,
 you can use `#{}` to insert them.
@@ -381,18 +393,22 @@ For example:
 挿入するときに`#{}`を利用できます。
 例えば：
 
-    p {
-      $font-size: 12px;
-      $line-height: 30px;
-      font: #{$font-size}/#{$line-height};
-    }
+```scss
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+```
 
 is compiled to:
 
 は、以下のようにコンパイルされます：
 
-    p {
-      font: 12px/30px; }
+```css
+p {
+  font: 12px/30px; }
+````
 
 #### Color Operations
 
@@ -410,9 +426,11 @@ For example:
 計算するという意味です。
 例えば：
 
-    p {
-      color: #010203 + #040506;
-    }
+```scss
+p {
+  color: #010203 + #040506;
+}
+```
 
 computes `01 + 04 = 05`, `02 + 05 = 07`, and `03 + 06 = 09`,
 and is compiled to:
@@ -420,8 +438,10 @@ and is compiled to:
 は`01 + 04 = 05`、`02 + 05 = 07`そして`03 + 06 = 09`と計算し、
 以下のようにコンパイルします：
 
-    p {
-      color: #050709; }
+```css
+p {
+  color: #050709; }
+```
 
 Often it's more useful to use {Sass::Script::Functions color functions}
 than to try to use color arithmetic to achieve the same effect.
@@ -437,9 +457,11 @@ For example:
 こちらも切り分けます。
 例えば：
 
-    p {
-      color: #010203 * 2;
-    }
+```scss
+p {
+  color: #010203 * 2;
+}
+```
 
 computes `01 * 2 = 02`, `02 * 2 = 04`, and `03 * 2 = 06`,
 and is compiled to:
@@ -447,8 +469,10 @@ and is compiled to:
 は`01 * 2 = 02`、`02 * 2 = 04`そして`03 * 2 = 06`と計算し、
 以下のようにコンパイルします：
 
-    p {
-      color: #020406; }
+```css
+p {
+  color: #020406; }
+```
 
 Note that colors with an alpha channel
 (those created with the {Sass::Script::Functions#rgba rgba}
@@ -464,16 +488,20 @@ For example:
 演算はアルファの値には作用しません。
 例えば：
 
-    p {
-      color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
-    }
+```scss
+p {
+  color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      color: rgba(255, 255, 0, 0.75); }
+```scss
+p {
+  color: rgba(255, 255, 0, 0.75); }
+```
 
 The alpha channel of a color can be adjusted using the
 {Sass::Script::Functions#opacify opacify} and
@@ -485,19 +513,23 @@ For example:
 調整されます。
 例えば：
 
-    $translucent-red: rgba(255, 0, 0, 0.5);
-    p {
-      color: opacify($translucent-red, 0.3);
-      background-color: transparentize($translucent-red, 0.25);
-    }
+```scss
+$translucent-red: rgba(255, 0, 0, 0.5);
+p {
+  color: opacify($translucent-red, 0.3);
+  background-color: transparentize($translucent-red, 0.25);
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      color: rgba(255, 0, 0, 0.9);
-      background-color: rgba(255, 0, 0, 0.25); }
+```css
+p {
+  color: rgba(255, 0, 0, 0.9);
+  background-color: rgba(255, 0, 0, 0.25); }
+```
 
 IE filters require all colors include the alpha layer, and be in
 the strict format of #AABBCCDD. You can more easily convert the
@@ -511,19 +543,23 @@ IEのフィルターは全色がアルファレイヤーに含まれる必要が
 より簡易に色の変換を行えます。
 例えば：
 
-    $translucent-red: rgba(255, 0, 0, 0.5);
-    $green: #00ff00;
-    div {
-      filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr='#{ie-hex-str($green)}', endColorstr='#{ie-hex-str($translucent-red)}');
-    }
+```scss
+$translucent-red: rgba(255, 0, 0, 0.5);
+$green: #00ff00;
+div {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr='#{ie-hex-str($green)}', endColorstr='#{ie-hex-str($translucent-red)}');
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    div {
-      filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=#FF00FF00, endColorstr=#80FF0000);
-    }
+```css
+div {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=#FF00FF00, endColorstr=#80FF0000);
+}
+```
 
 #### String Operations
 
@@ -533,16 +569,20 @@ The `+` operation can be used to concatenate strings:
 
 `+` の演算は文字列の連結に利用できます:
 
-    p {
-      cursor: e + -resize;
-    }
+```scss
+p {
+  cursor: e + -resize;
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      cursor: e-resize; }
+```css
+p {
+  cursor: e-resize; }
+```
 
 Note that if a quoted string is added to an unquoted string
 (that is, the quoted string is to the left of the `+`),
@@ -560,18 +600,22 @@ For example:
 演算の結果はクオートされていない文字列になります。
 例えば：
 
-    p:before {
-      content: "Foo " + Bar;
-      font-family: sans- + "serif";
-    }
+```scss
+p:before {
+  content: "Foo " + Bar;
+  font-family: sans- + "serif";
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p:before {
-      content: "Foo Bar";
-      font-family: sans-serif; }
+```css
+p:before {
+  content: "Foo Bar";
+  font-family: sans-serif; }
+```
 
 By default, if two values are placed next to one another,
 they are concatenated with a space:
@@ -579,16 +623,20 @@ they are concatenated with a space:
 デフォルトでは、2つの値が他の値に続いている時、
 スペースで連結されます：
 
-    p {
-      margin: 3px + 4px auto;
-    }
+```scss
+p {
+  margin: 3px + 4px auto;
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      margin: 7px auto; }
+```css
+p {
+  margin: 7px auto; }
+```
 
 Within a string of text, #{} style interpolation can be used to
 place dynamic values within the string:
@@ -596,32 +644,40 @@ place dynamic values within the string:
 テキストの文字列の中では、#{}スタイルの補間は
 文字列の中で直接値として利用できます：
 
-    p:before {
-      content: "I ate #{5 + 10} pies!";
-    }
+```scss
+p:before {
+  content: "I ate #{5 + 10} pies!";
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p:before {
-      content: "I ate 15 pies!"; }
+```css
+p:before {
+  content: "I ate 15 pies!"; }
+```
 
 Null values are treated as empty strings for string interpolation:
 
 ヌル値は文字列補間で空文字として扱われます：
 
-    $value: null;
-    p:before {
-      content: "I ate #{$value} pies!";
-    }
+```scss
+$value: null;
+p:before {
+  content: "I ate #{$value} pies!";
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p:before {
-      content: "I ate  pies!"; }
+```css
+p:before {
+  content: "I ate  pies!"; }
+```
 
 #### Boolean Operations
 
@@ -652,16 +708,20 @@ Parentheses can be used to affect the order of operations:
 
 カッコは演算の順序を操作することができます：
 
-    p {
-      width: 1em + (2em * 3);
-    }
+```scss
+p {
+  width: 1em + (2em * 3);
+}
+```
 
 is compiled to:
 
 以下のようにコンパイルされます：
 
-    p {
-      width: 7em; }
+```css
+p {
+  width: 7em; }
+```
 
 ### Functions
 
@@ -673,16 +733,20 @@ that are called using the normal CSS function syntax:
 Sassスクリプトは通常のCSSの記法で利用できる
 有用な関数をいくつか定義しています。
 
-    p {
-      color: hsl(0, 100%, 50%);
-    }
+```scss
+p {
+  color: hsl(0, 100%, 50%);
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p {
-      color: #ff0000; }
+```css
+p {
+  color: #ff0000; }
+```
 
 #### Keyword Arguments
 
@@ -694,9 +758,11 @@ The above example can also be written as:
 Sassの関数は明示的にキーワード引数を使うことでも呼び出せます。
 先ほどの例はこのようにも記述できます：
 
-    p {
-      color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
-    }
+```scss
+p {
+  color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
+}
+```
 
 While this is less concise, it can make the stylesheet easier to read.
 It also allows functions to present more flexible interfaces,
@@ -730,18 +796,22 @@ and property names using #{} interpolation syntax:
 Sassスクリプトの変数は、
 セレクタやプロパティ名でも#{}の補間記法で利用できます：
 
-    $name: foo;
-    $attr: border;
-    p.#{$name} {
-      #{$attr}-color: blue;
-    }
+```scss
+$name: foo;
+$attr: border;
+p.#{$name} {
+  #{$attr}-color: blue;
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    p.foo {
-      border-color: blue; }
+```css
+p.foo {
+  border-color: blue; }
+```
 
 It's also possible to use `#{}` to put SassScript into property values.
 In most cases this isn't any better than using a variable,
@@ -755,18 +825,22 @@ For example:
 どんな演算も通常のCSSと同様に扱われるということになります。
 例えば：
 
-    p {
-      $font-size: 12px;
-      $line-height: 30px;
-      font: #{$font-size}/#{$line-height};
-    }
+```scss
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+```
 
 is compiled to:
 
 はいかのようにコンパイルされます：
 
-    p {
-      font: 12px/30px; }
+```css
+p {
+  font: 12px/30px; }
+```
 
 ### Variable Defaults: `!default`
 
@@ -788,37 +862,45 @@ For example:
 
 例えば：
 
-    $content: "First content";
-    $content: "Second content?" !default;
-    $new_content: "First time reference" !default;
+```scss
+$content: "First content";
+$content: "Second content?" !default;
+$new_content: "First time reference" !default;
 
-    #main {
-      content: $content;
-      new-content: $new_content;
-    }
+#main {
+  content: $content;
+  new-content: $new_content;
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    #main {
-      content: "First content";
-      new-content: "First time reference"; }
+```css
+#main {
+  content: "First content";
+  new-content: "First time reference"; }
+```
 
 Variables with `null` values are treated as unassigned by !default:
 
 変数がヌル値をもつ場合は !defaultによって未定義として扱われます：
 
-    $content: null;
-    $content: "Non-null content" !default;
+```scss
+$content: null;
+$content: "Non-null content" !default;
 
-    #main {
-      content: $content;
-    }
+#main {
+  content: $content;
+}
+```
 
 is compiled to:
 
 は以下のようにコンパイルされます：
 
-    #main {
-      content: "Non-null content"; }
+```css
+#main {
+  content: "Non-null content"; }
+```
