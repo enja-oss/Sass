@@ -762,13 +762,23 @@ is compiled to:
 
 ### Variable Defaults: `!default`
 
+### 変数のデフォルト: `!default`
+
 You can assign to variables if they aren't already assigned
 by adding the `!default` flag to the end of the value.
 This means that if the variable has already been assigned to,
 it won't be re-assigned,
 but if it doesn't have a value yet, it will be given one.
 
+変数が未定義であれば、
+`!default`フラグを値の末尾に付属した割り当てを行えます。
+これは、変数がすでに割り当てられていた場合、
+再度割り当てられないことを意味しまします、
+しかし、まだ値を保持していない場合は、割り当てが行われます。
+
 For example:
+
+例えば：
 
     $content: "First content";
     $content: "Second content?" !default;
@@ -781,11 +791,15 @@ For example:
 
 is compiled to:
 
+は以下のようにコンパイルされます：
+
     #main {
       content: "First content";
       new-content: "First time reference"; }
 
 Variables with `null` values are treated as unassigned by !default:
+
+変数がヌル値をもつ場合は !defaultによって未定義として扱われます：
 
     $content: null;
     $content: "Non-null content" !default;
@@ -795,6 +809,8 @@ Variables with `null` values are treated as unassigned by !default:
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます：
 
     #main {
       content: "Non-null content"; }
