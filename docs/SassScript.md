@@ -714,8 +714,13 @@ as well as instructions on defining your own in Ruby.
 
 ### Interpolation: `#{}` {#interpolation_}
 
+### 補間: `#{}` {#interpolation_}
+
 You can also use SassScript variables in selectors
 and property names using #{} interpolation syntax:
+
+Sassスクリプトの変数は、
+セレクタやプロパティ名でも#{}の補間記法で利用できます：
 
     $name: foo;
     $attr: border;
@@ -724,6 +729,8 @@ and property names using #{} interpolation syntax:
     }
 
 is compiled to:
+
+は以下のようにコンパイルされます：
 
     p.foo {
       border-color: blue; }
@@ -734,6 +741,12 @@ but using `#{}` does mean that any operations near it
 will be treated as plain CSS.
 For example:
 
+#{}を使うことで、プロパティの値に対してSassスクリプトを適用することも可能になります。
+ほとんどの場合、変数を利用するよりも有効ということはないですが、
+`#{}`を利用することは、
+どんな演算も通常のCSSと同様に扱われるということになります。
+例えば：
+
     p {
       $font-size: 12px;
       $line-height: 30px;
@@ -741,6 +754,8 @@ For example:
     }
 
 is compiled to:
+
+はいかのようにコンパイルされます：
 
     p {
       font: 12px/30px; }
