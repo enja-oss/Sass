@@ -1,12 +1,12 @@
 +  元文書: [https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#function-directives-function_directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#function-directives-function_directives)
 
-## 制御ディレクティブ
+## 制御構文
 
 SassScript supports basic control directives
 for including styles only under some conditions
 or including the same style several times with variations.
 
-SassScriptは、ある条件下だけスタイルを含ませるとか、同じスタイルを様々にバリエーションを変えて含ませるとかのような基本的な制御ディレクティブをサポートしています。
+SassScriptは、ある条件の時だけスタイルを含ませるとか、同じスタイルをバリエーションを変えて含ませる等のような基本的な制御構文をサポートしています。
 
 **Note that control directives are an advanced feature,
 and are not recommended in the course of day-to-day styling**.
@@ -14,7 +14,7 @@ They exist mainly for use in [mixins](#mixins),
 particularly those that are part of libraries like [Compass](http://compass-style.org),
 and so require substantial flexibility.
 
-**制御ディレクティブは高度な機能で、日々のスタイルの作業をしていく過程で使うことは推奨していません。**
+**制御構文は高度な機能で、スタイルの日々の作業を行なっていく過程で使うことは推奨していません。**
 [ミックスイン](#mixins)や、[Compass](http://compass-style.org)のようなライブラリの一部や、柔軟性が要求される部分で主に使われます。
 
 ### `@if`
@@ -23,7 +23,7 @@ The `@if` directive takes a SassScript expression
 and uses the styles nested beneath it if the expression returns
 anything other than `false` or `null`:
 
-`@if` ディレクティブは、SassScript式を受け取り、式が `false` や `null` 以外を返す場合、ネストされた中のスタイルを使います。:
+`@if` 構文は、SassScript式を受け取り、式が `false` や `null` 以外を返す場合、ネストされた中のスタイルを使います。:
 
     p {
       @if 1 + 1 == 2 { border: 1px solid;  }
@@ -45,7 +45,7 @@ the `@else if` statements are tried in order
 until one succeeds or the `@else` is reached.
 For example:
 
-`@if` 文は複数の `@else if` 文と一つの `@else` 文を
+`@if` 文は、複数の `@else if` 文と一つの `@else` 文を続けることができます。
 `@if` 文が正しくない場合、 `@else if` 文から正しいものがあるか試し、 `@else` に到達します。
 例:
 
@@ -78,9 +78,9 @@ Note the difference in the keywords `through` and `to`. `$var` can be any
 variable name, like `$i`; `<start>` and `<end>` are SassScript expressions that
 should return integers.
 
-`@for` ディレクティブは、スタイルのセットを繰り返し出力します。
-個々の反復処理の中で、カウンタ変数は出力を調整するために使用されます。
-ディレクティブには、 `@for $var from <start> through <end>` と `@for $var from <start> to <end>` の２つの形式があります。
+`@for` 構文は、スタイルのセットを繰り返し出力します。
+個々の反復処理の中で、カウンター変数は出力を調整するために使用されます。
+構文には、 `@for $var from <start> through <end>` と `@for $var from <start> to <end>` の2つの形式があります。
 `through` と `to` というキーワードの違いに注意して下さい。
 `$var` は、 `$i` のように任意の変数名にすることができ、 `<start>` と `<end>` は数字を返すSassScript式です。
 
@@ -90,9 +90,9 @@ the form `from ... through`, the range *includes* the values of `<start>` and
 `<end>`, but the form `from ... to` runs up to *but not including* the value of
 `<end>`. Using the `through` syntax,
 
-`@for` 文は、指定された範囲内で連続した番号を `$var` にセットして、 `$var` の値を使ってネストしたスタイルを都度出力します。
-`from ... through` 形式から、 `<start>` の値と `<end>` の値の範囲内だけ実行されますが、
-が `from ... to` 形式では、 `<end>` の値が含まれなくなるまで実行されます。
+`@for` 文は、指定された範囲内で連続した番号を `$var` にセットして、 `$var` の値を使ってネスト内のスタイルを都度出力します。
+`from ... through` の形式から、 `<start>` の値と `<end>` の値の間に*含まれる値*の時だけ実行されますが、
+が `from ... to` の形式では、 `<end>` の値が*含まれなくなる*まで実行されます。
 `through` 構文を使って下さい。
 
     @for $i from 1 through 3 {
@@ -116,7 +116,7 @@ The `@each` rule has the form `@each $var in <list>`.
 `$var` can be any variable name, like `$length` or `$name`,
 and `<list>` is a SassScript expression that returns a list.
 
-`@each` ルールは、 `@each $var in <list>` の形式を持っています。
+`@each` ルールは、 `@each $var in <list>` の形式を取ります。
 `$var` は、 `$length` や `$name` のような任意の変数名にすることができ、
 `<list>` は、リストを返すSassScript式です。
 
@@ -124,7 +124,7 @@ The `@each` rule sets `$var` to each item in the list,
 then outputs the styles it contains using that value of `$var`.
 For example:
 
-`@each` ルールは、リスト内の各内容を `$var` にセットし、
+`@each` ルールは、リスト内の各項目を `$var` にセットし、
 `$var` の値を使ったものが含まれているスタイルを出力します。
 例:
 
@@ -157,7 +157,7 @@ than the `@for` statement is capable of,
 although this is rarely necessary.
 For example:
 
-`@while` ディレクティブは、SassScript式を受け取り、文が `false` と評価されるまでネストされたスタイルを繰り返し出力します。
+`@while` 構文は、SassScript式を受け取り、文が `false` と評価されるまでネストされたスタイルを繰り返し出力します。
 これは必要になることはめったにありませんが、 `@for` 文で可能なことよりももっと複雑なループを実現するために使えます。
 例:
 
