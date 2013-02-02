@@ -1,12 +1,12 @@
 +  元文書: [https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives)
 
-## 制御構文
+## 制御ディレクティブ
 
 SassScript supports basic control directives
 for including styles only under some conditions
 or including the same style several times with variations.
 
-SassScriptは、ある条件の時だけスタイルを含ませるとか、同じスタイルをバリエーションを変えて含ませる等のような基本的な制御構文をサポートしています。
+SassScriptは、ある条件の時だけスタイルを含ませるとか、同じスタイルをバリエーションを変えて含ませる等のような基本的な制御ディレクティブをサポートしています。
 
 **Note that control directives are an advanced feature,
 and are not recommended in the course of day-to-day styling**.
@@ -14,8 +14,8 @@ They exist mainly for use in [mixins](#mixins),
 particularly those that are part of libraries like [Compass](http://compass-style.org),
 and so require substantial flexibility.
 
-**制御構文は高度な機能で、スタイルの日々の作業を行なっていく過程で使うことは推奨していません。**
-[ミックスイン](#mixins)や、[Compass](http://compass-style.org)のようなライブラリの一部や、柔軟性が要求される部分で主に使われます。
+**制御ディレクティブは高度な機能で、日々行うような作業の過程で使うことは推奨しません。**
+主に[ミックスイン](#mixins)、特に[Compass](http://compass-style.org)などのライブラリ内で使われるミックスインなど、柔軟性が要求される箇所で使われます。
 
 ### `@if`
 
@@ -23,7 +23,7 @@ The `@if` directive takes a SassScript expression
 and uses the styles nested beneath it if the expression returns
 anything other than `false` or `null`:
 
-`@if` 構文は、SassScript式を受け取り、式が `false` や `null` 以外を返す場合、ネストされた中のスタイルを使います。:
+`@if` ディレクティブは、SassScript式を受け取り、式が `false` や `null` 以外を返す場合、その中のスタイルを使います。:
 
     p {
       @if 1 + 1 == 2 { border: 1px solid;  }
@@ -33,7 +33,7 @@ anything other than `false` or `null`:
 
 is compiled to:
 
-は以下のように出力されます。:
+これは以下のように出力されます。:
 
     p {
       border: 1px solid; }
@@ -45,8 +45,9 @@ the `@else if` statements are tried in order
 until one succeeds or the `@else` is reached.
 For example:
 
-`@if` 文は、複数の `@else if` 文と一つの `@else` 文を続けることができます。
-`@if` 文が正しくない場合、 `@else if` 文から正しいものがあるか試し、 `@else` に到達します。
+`@if` 文は、複数の `@else if` 文と一つの `@else` 文を続けて記述できます。
+`@if` 文が正しくない場合、 `@else if` 文が順に試され、文が正しいかそうでないかを `@else` に到達するまで続けます。
+
 例:
 
     $type: monster;
@@ -64,7 +65,7 @@ For example:
 
 is compiled to:
 
-は以下のように出力されます。:
+これは以下のように出力されます。:
 
     p {
       color: green; }
@@ -78,7 +79,7 @@ Note the difference in the keywords `through` and `to`. `$var` can be any
 variable name, like `$i`; `<start>` and `<end>` are SassScript expressions that
 should return integers.
 
-`@for` 構文は、スタイルのセットを繰り返し出力します。
+`@for` ディレクティブは、スタイルのセットを繰り返し出力します。
 個々の反復処理の中で、カウンター変数は出力を調整するために使用されます。
 構文には、 `@for $var from <start> through <end>` と `@for $var from <start> to <end>` の2つの形式があります。
 `through` と `to` というキーワードの違いに注意して下さい。
@@ -90,10 +91,10 @@ the form `from ... through`, the range *includes* the values of `<start>` and
 `<end>`, but the form `from ... to` runs up to *but not including* the value of
 `<end>`. Using the `through` syntax,
 
-`@for` 文は、指定された範囲内で連続した番号を `$var` にセットして、 `$var` の値を使ってネスト内のスタイルを都度出力します。
-`from ... through` の形式から、 `<start>` の値と `<end>` の値の間に*含まれる値*の時だけ実行されますが、
-が `from ... to` の形式では、 `<end>` の値が*含まれなくなる*まで実行されます。
-`through` 構文を使って下さい。
+`@for` 文は、指定された範囲内で連続した数値を `$var` にセットして、 `$var` の値を使ってネスト内のスタイルを都度出力します。
+`from ... through` の場合、値の取る範囲は `<start>` と `<end>` の値を含みますが、
+`from ... to` の場合、値の取る範囲に `<end>` が*含まれません*。
+`for ... through` を使った文は以下のようになります。
 
     @for $i from 1 through 3 {
       .item-#{$i} { width: 2em * $i; }
@@ -101,7 +102,7 @@ the form `from ... through`, the range *includes* the values of `<start>` and
 
 is compiled to:
 
-は以下のように出力されます。:
+これは以下のように出力されます。:
 
     .item-1 {
       width: 2em; }
@@ -125,7 +126,7 @@ then outputs the styles it contains using that value of `$var`.
 For example:
 
 `@each` ルールは、リスト内の各項目を `$var` にセットし、
-`$var` の値を使ったものが含まれているスタイルを出力します。
+その `$var` の値を使って、@each ルール文内のスタイルを出力します
 例:
 
     @each $animal in puma, sea-slug, egret, salamander {
@@ -136,7 +137,7 @@ For example:
 
 is compiled to:
 
-は以下のように出力されます。:
+これは以下のように出力されます。:
 
     .puma-icon {
       background-image: url('/images/puma.png'); }
@@ -157,7 +158,7 @@ than the `@for` statement is capable of,
 although this is rarely necessary.
 For example:
 
-`@while` 構文は、SassScript式を受け取り、文が `false` と評価されるまでネストされたスタイルを繰り返し出力します。
+`@while` ディレクティブは、SassScript式を受け取り、文が `false` と評価されるまで、文内のスタイルを繰り返し出力します。
 これは必要になることはめったにありませんが、 `@for` 文で可能なことよりももっと複雑なループを実現するために使えます。
 例:
 
@@ -169,7 +170,7 @@ For example:
 
 is compiled to:
 
-は以下のように出力されます。:
+これは以下のように出力されます。:
 
     .item-6 {
       width: 12em; }
