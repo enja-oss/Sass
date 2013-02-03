@@ -2,7 +2,7 @@
 
 ## SassScript [原文](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#sassscript)
 
-## Sassスクリプト [原文](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#sassscript)
+## SassScript [原文](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#sassscript)
 
 
 In addition to the plain CSS property syntax,
@@ -11,16 +11,16 @@ SassScript allows properties to use
 variables, arithmetic, and extra functions.
 SassScript can be used in any property value.
 
-プレーンなCSSプロパティの構文に加えることで、
-SassはSassスクリプトと呼ぶ小型の機能拡張群を扱うことができます。
-Sassスクリプトは、変数や計算そして追加機能をプロパティで利用できるようにしています。
-Sassスクリプトはあらゆるプロパティの値で利用することができます。
+プレーンなCSSプロパティ構文に加えて、
+SassはSassScriptと呼ぶ小型の機能拡張群を扱うことができます。
+SassScriptは、変数や計算そして追加機能をプロパティで利用できるようにしています。
+SassScriptはあらゆるプロパティの値で利用できます。
 
 SassScript can also be used to generate selectors and property names,
 which is useful when writing [mixins](#mixins).
 This is done via [interpolation](#interpolation_).
 
-Sassスクリプトは、セレクタやプロパティ名を生成するときにも利用でき、
+SassScriptは、セレクタやプロパティ名を生成するときにも利用でき、
 それらは[ミックスイン](#mixins)を記述するときに有用です。
 これは[補間](#interpolation_)によって行われます。
 
@@ -33,9 +33,9 @@ To launch the shell run the sass command-line with the `-i` option. At the
 prompt, enter any legal SassScript expression to have it evaluated
 and the result printed out for you:
 
-対話式シェルを利用することで簡単にSassスクリプトの実験ができます。
+SassScriptは対話式シェルを使って簡単に試せます。
 シェルを起動させるにはコマンドラインで `-i` をつけてsassを実行します。
-プロンプトが表示されたら、実行して結果を出力する規定されたSassスクリプト構文をどれでも入力します：
+プロンプトが表示されたら、実行して結果を出力する規定されたSassScript構文をどれでも入力します：
 
 ```command-line
 $ sass -i
@@ -58,7 +58,7 @@ is to use variables.
 Variables begin with dollar signs,
 and are set like CSS properties:
 
-Sassスクリプトのもっとも簡単な利用法は変数を使うことです。
+SassScriptのもっとも簡単な利用法は変数を使うことです。
 変数はドルマークから始まり、CSSプロパティのようにセットされます：
 
 ```scss
@@ -106,7 +106,7 @@ this still works, but it's deprecated and prints a warning.
 
 SassScript supports six main data types:
 
-Sassスクリプトは6つの主なデータータイプをサポートしています：
+SassScriptは6つの主なデータータイプをサポートしています：
 
 * numbers (e.g. `1.2`, `13`, `10px`)
 * strings of text, with and without quotes (e.g. `"foo"`, `'bar'`, `baz`)
@@ -127,7 +127,7 @@ such as Unicode ranges and `!important` declarations.
 However, it has no special handling for these types.
 They're treated just like unquoted strings.
 
-Sassスクリプトは、その他にもユニコードの範囲内の文字や
+SassScriptは、その他にもユニコードの範囲内の文字や
 `!important`宣言といった全てのCSSのプロパティの値のタイプをサポートします。
 どういう形であれ、これらに対して特別な対応は必要ありません。
 これらはちゃんとクオートされていない文字として扱われます。
@@ -146,7 +146,7 @@ that kind of string will be used in the resulting CSS.
 CSSでは2通りの文字列が規定されています：
 `"Lucida Grande"`や`'http://sass-lang.com'`のようにクオートがついているものと、
 `sans-serif`や`bold`のようにクオートがつかないものです。
-Sassスクリプトではどちらも認識します、
+SassScriptではどちらも認識します、
 また一般的にはSassの文書の中で片方のタイプの文字列が利用された場合には、
 出力したCSSでもそのタイプの文字列が適用されます。
 
@@ -291,7 +291,7 @@ SassScript supports the standard arithmetic operations on numbers
 (`+`, `-`, `*`, `/`, `%`),
 and will automatically convert between units if it can:
 
-Sassスクリプトは数値型では基本的な四則演算をサポートしています、
+SassScriptは数値型では基本的な四則演算をサポートしています、
 (`+`, `-`, `*`, `/`, `%`)
 さらに演算が可能であれば異なる単位のものでも自動的に変換します：
 
@@ -338,9 +338,9 @@ This means that by default, if two numbers are separated by `/` in SassScript,
 then they will appear that way in the resulting CSS.
 
 CSSはプロパティの値で数値の区切りとして`/`が利用されています。
-SassスクリプトはCSSのプロパティ構文の拡張なので、
+SassScriptはCSSのプロパティ構文の拡張なので、
 これに対応する必要がありますが、一方で割り算で`/`が利用できるようにもしています。
-というわけでデフォルトでは、Sassスクリプトで2つの数字が`/`で区切られていた場合、
+というわけでデフォルトでは、SassScriptで2つの数字が`/`で区切られていた場合、
 結果としてCSSのやり方で出力されることを意味します。
 
 However, there are three situations where the `/` will be interpreted as division.
@@ -686,7 +686,7 @@ p:before {
 SassScript supports `and`, `or`, and `not` operators
 for boolean values.
 
-Sassスクリプトは、`and` `or` `not` 演算がブール値で利用できます。
+SassScriptは、`and` `or` `not` 演算がブール値で利用できます。
 
 #### List Operations
 
@@ -730,7 +730,7 @@ p {
 SassScript defines some useful functions
 that are called using the normal CSS function syntax:
 
-Sassスクリプトは通常のCSSの記法で利用できる
+SassScriptは通常のCSSの記法で利用できる
 有用な関数をいくつか定義しています。
 
 ```scss
@@ -793,7 +793,7 @@ as well as instructions on defining your own in Ruby.
 You can also use SassScript variables in selectors
 and property names using #{} interpolation syntax:
 
-Sassスクリプトの変数は、
+SassScriptの変数は、
 セレクタやプロパティ名でも#{}の補間記法で利用できます：
 
 ```scss
@@ -819,7 +819,7 @@ but using `#{}` does mean that any operations near it
 will be treated as plain CSS.
 For example:
 
-`#{}`を使うことで、プロパティの値に対してSassスクリプトを適用することも可能になります。
+`#{}`を使うことで、プロパティの値に対してSassScriptを適用することも可能になります。
 ほとんどの場合、変数を利用するよりも有効ということはないですが、
 `#{}`を利用することは、
 どんな演算も通常のCSSと同様に扱われるということになります。
