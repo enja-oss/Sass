@@ -1,12 +1,12 @@
 +  元文書: [https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives](https://github.com/nex3/sass/blob/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src/SASS_REFERENCE.md#control-directives)
 
-## 制御ディレクティブ
+## コントロールディレクティブ
 
 SassScript supports basic control directives
 for including styles only under some conditions
 or including the same style several times with variations.
 
-SassScriptは、ある条件の時だけスタイルを含ませるとか、同じスタイルをバリエーションを変えて含ませる等のような基本的な制御ディレクティブをサポートしています。
+SassScriptは、ある条件の時だけスタイルを含ませるとか、同じスタイルをバリエーションを変えて含ませる等のような基本的なコントロールディレクティブをサポートしています。
 
 **Note that control directives are an advanced feature,
 and are not recommended in the course of day-to-day styling**.
@@ -14,7 +14,7 @@ They exist mainly for use in [mixins](#mixins),
 particularly those that are part of libraries like [Compass](http://compass-style.org),
 and so require substantial flexibility.
 
-**制御ディレクティブは高度な機能で、日々行うような作業の過程で使うことは推奨しません。**
+**コントロールディレクティブは高度な機能で、日々行うような作業の過程で使うことは推奨しません。**
 主に[ミックスイン](#mixins)、特に[Compass](http://compass-style.org)などのライブラリ内で使われるミックスインなど、柔軟性が要求される箇所で使われます。
 
 ### `@if`
