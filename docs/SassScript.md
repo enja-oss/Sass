@@ -59,7 +59,7 @@ Variables begin with dollar signs,
 and are set like CSS properties:
 
 SassScriptのもっとも簡単な利用法は変数を使うことです。
-変数はドルマークから始まり、CSSプロパティのようにセットされます：
+変数はドル記号から始まり、CSSプロパティのようにセットされます：
 
 ```scss
 $width: 5em;
@@ -81,22 +81,22 @@ If they're defined outside of any nested selectors,
 they're available everywhere.
 
 変数は、定義を行ったネストされたセレクタのレベルの内側でのみ有効になります。
-すべてのネストされたセレクタの外側で定義されれば、その場所でも有効となります。
+すべてのネストされたセレクタの外側で定義されれば、全ての場所でも有効となります。
 
 Variables used to use the prefix character `!`;
 this still works, but it's deprecated and prints a warning.
 `$` is the recommended syntax.
 
-変数は接頭辞として`!`が利用されました；
-これは今も動きますが、非推奨で警告が出力されます。
+以前は変数の接頭辞として`!`が使われていました。
+これは今も使えますが、非推奨のため警告が出力されます。
 `$`が推奨された記述です。
 
 Variables also used to be defined with `=` rather than `:`;
 this still works, but it's deprecated and prints a warning.
 `:` is the recommended syntax.
 
-変数は`:`よりもむしろ`=`が定義時に利用されました；
-これは今も動きますが、非推奨で警告が出力されます。
+以前、変数の定義には`:`よりもむしろ`=`が定義時に利用されました。
+この記法は今も使えますが、非推奨のため警告が出力されます。
 `:`が推奨された記述です。
 
 
@@ -106,7 +106,7 @@ this still works, but it's deprecated and prints a warning.
 
 SassScript supports six main data types:
 
-SassScriptは6つの主なデータータイプをサポートしています：
+SassScriptは6つの主なデータタイプをサポートしています：
 
 * numbers (e.g. `1.2`, `13`, `10px`)
 * strings of text, with and without quotes (e.g. `"foo"`, `'bar'`, `baz`)
@@ -127,10 +127,10 @@ such as Unicode ranges and `!important` declarations.
 However, it has no special handling for these types.
 They're treated just like unquoted strings.
 
-SassScriptは、その他にもユニコードの範囲内の文字や
+SassScriptは、その他にもユニコードの範囲内の文字列や
 `!important`宣言といった全てのCSSのプロパティの値のタイプをサポートします。
 どういう形であれ、これらに対して特別な対応は必要ありません。
-これらはちゃんとクオートされていない文字として扱われます。
+これらはちゃんとクオートされていない文字列として扱われます。
 
 #### Strings {#sass-script-strings}
 
@@ -158,7 +158,7 @@ For example:
 
 とはいえ、一つ例外があります：
 [`#{}` 補間](#interpolation_)を利用した場合には、
-クオートされた文字列はクオートが取り除かれます。
+クオートされた文字列からクオートが取り除かれます。
 これは[ミックスイン](#mixins)でのセレクタ名などを扱うのを容易にします。
 例えば：
 
@@ -200,7 +200,7 @@ In fact, individual values count as lists, too: they're just lists with one item
 
 リストは`margin: 10px 15px 0 0`や`font-face: Helvetica, Arial, sans-serif`のようなCSSの定義の値を表す方法です。
 リストは、他とスペースかカンマどちらかで区切られた値のセットそのものです。
-実際には、ここの値もリストとしてカウントします：それらはひとつの要素しかもたないリストとなります。
+さらには、個々の値もリストとして扱われます。それらはひとつの項目からなるリストとなります。
 
 On their own, lists don't do much,
 but the [Sass list functions](Sass/Script/Functions.html#list-functions)
@@ -210,12 +210,12 @@ the {Sass::Script::Functions#join join function} can join multiple lists togethe
 and the {Sass::Script::Functions#append append function} can add items to lists.
 The [`@each` rule](#each-directive) can also add styles for each item in a list.
 
-リスト自体はそれほど何かをするというわけではありません、
-しかし[Sassのリスト機能](Sass/Script/Functions.html#list-functions)で、実用的になります。
+リスト自体は、特に何かをするわけではありません、
+しかし[Sassのリスト関数](Sass/Script/Functions.html#list-functions)によって便利に使えます。
 {Sass::Script::Functions#nth nth function}はリストの項目にアクセスできますし、
 {Sass::Script::Functions#join join function}は複数のリストを一つに結合できます、
 また、{Sass::Script::Functions#append append function}はリストに項目を追加できます。
-[`@each` ルール](#each-directive)はリストのそれぞれの項目にスタイルの追加もできます。
+[`@each` ルール](#each-directive)を使えば、リストの各項目にスタイルを追加できます。
 
 In addition to containing simple values, lists can contain other lists.
 For example, `1px 2px, 5px 6px` is a two-item list
@@ -228,15 +228,15 @@ containing the list `1px 2px` and the list `5px 6px`.
 The difference is that the outer list is space-separated,
 where before it was comma-separated.
 
-リストはシンプルな値を内包していることに加えて、他のリストを含めることもできます。
+リストにはシンプルな値だけでなく、他のリストを含められます。
 例えば、`1px 2px, 5px 6px`は、
-`1px 2px`のリストと`5px 6px`のリストを内包した、2つの項目のリストとなります。
-もし、内部のリストと外側のリストが同じ区切り文字だった場合は、
-内部のリストの最初と最後にカッコをつけて明示する必要があります。
+`1px 2px`のリストと`5px 6px`のリストからなる、2つの項目を持つリストとなります。
+もし、内側のリストと外側のリストが同じ区切り文字を持つ場合は、
+内側のリストの最初と最後にカッコをつけて明示する必要があります。
 例えば、`(1px 2px) (5px 6px)`は、
-`1px 2px`のリストと`5px 6px`のリストを内包した、2つの項目のリストとなります。
-この違いは、外側のリストが先ほどカンマで区切られていたリストが、
-スペースで区切られていることです。
+`1px 2px`のリストと`5px 6px`のリストからなる、2つの項目を持つリストとなります。
+違いは、外側のリストがカンマ区切りだった前の例に対し、
+この例は外側のリストがスペース区切りということです。
 
 When lists are turned into plain CSS, Sass doesn't add any parentheses,
 since CSS doesn't understand them.
@@ -246,11 +246,11 @@ However, they aren't the same when they're Sass:
 the first is a list containing two lists,
 while the second is a list containing four numbers.
 
-リストがCSSに置き換えられるときには、
-CSSでは解釈されないので、Sassはカッコを入れることはありません。
-それは、`(1px 2px) (5px 6px)`と`1px 2px 5px 6px`は、
-CSSになったときには同じものに見えることを意味します。
-しかしながら、それらはSassにおいては同じというわけではありません：
+リストがCSSに置き換わるときには、
+CSSではカッコが解釈されないため、Sassはカッコを付加しません。
+つまり、`(1px 2px) (5px 6px)`と`1px 2px 5px 6px`は、
+出力されたCSSでは、同じように現れます。
+しかし、Sass上では同じというわけではありません。
 前者は2つのリストを内包したリストであり、
 一方後者は4つの数字を内包したリストです。
 
@@ -293,7 +293,7 @@ and will automatically convert between units if it can:
 
 SassScriptは数値型では基本的な四則演算をサポートしています、
 (`+`, `-`, `*`, `/`, `%`)
-さらに演算が可能であれば異なる単位のものでも自動的に変換します：
+さらに演算が可能であれば異なる単位のものでも自動的に変換します。
 
 ```scss
 p {
@@ -303,7 +303,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -349,7 +349,7 @@ They are:
 
 しかしながら、3つの条件下においては`/`は割り算として解釈されます。
 その条件は割り算が実際に使用される大部分のケースを対象としています。
-それは：
+それは。
 
 1. If the value, or any part of it, is stored in a variable.
 2. If the value is surrounded by parentheses.
@@ -361,7 +361,7 @@ They are:
 
 For example:
 
-例えば：
+例えば。
 
 ```scss
 p {
@@ -375,7 +375,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -391,7 +391,7 @@ For example:
 
 もし、CSSの`/`と一緒に変数を利用したい場合は、
 挿入するときに`#{}`を利用できます。
-例えば：
+例えば。
 
 ```scss
 p {
@@ -403,7 +403,7 @@ p {
 
 is compiled to:
 
-は、以下のようにコンパイルされます：
+は、以下のようにコンパイルされます。
 
 ```css
 p {
@@ -424,7 +424,7 @@ For example:
 色の値も対象にしています。
 これは、順番に赤、緑、青の要素ごとに
 計算するという意味です。
-例えば：
+例えば。
 
 ```scss
 p {
@@ -436,7 +436,7 @@ computes `01 + 04 = 05`, `02 + 05 = 07`, and `03 + 06 = 09`,
 and is compiled to:
 
 は`01 + 04 = 05`、`02 + 05 = 07`そして`03 + 06 = 09`と計算し、
-以下のようにコンパイルします：
+以下のようにコンパイルします。
 
 ```css
 p {
@@ -455,7 +455,7 @@ For example:
 
 四則演算は色の値と数値の間でも動作します、
 こちらも切り分けます。
-例えば：
+例えば。
 
 ```scss
 p {
@@ -467,7 +467,7 @@ computes `01 * 2 = 02`, `02 * 2 = 04`, and `03 * 2 = 06`,
 and is compiled to:
 
 は`01 * 2 = 02`、`02 * 2 = 04`そして`03 * 2 = 06`と計算し、
-以下のようにコンパイルします：
+以下のようにコンパイルします。
 
 ```css
 p {
@@ -486,7 +486,7 @@ For example:
 または{Sass::Script::Functions#hsla hsla}機能で生成された)アルファチャンネル
 を含む色の値で四則演算を行う場合、アルファの値は同じである必要があります。
 演算はアルファの値には作用しません。
-例えば：
+例えば。
 
 ```scss
 p {
@@ -496,7 +496,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```scss
 p {
@@ -511,7 +511,7 @@ For example:
 アルファチャンネルは{Sass::Script::Functions#opacify opacify}と
 {Sass::Script::Functions#transparentize transparentize}の機能を利用して
 調整されます。
-例えば：
+例えば。
 
 ```scss
 $translucent-red: rgba(255, 0, 0, 0.5);
@@ -523,7 +523,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -541,7 +541,7 @@ IEのフィルターは全色がアルファレイヤーに含まれる必要が
 そして#AABBCCDDの厳密な書式になります。
 {Sass::Script::Functions#ie_hex_str ie_hex_str}機能を利用することで
 より簡易に色の変換を行えます。
-例えば：
+例えば。
 
 ```scss
 $translucent-red: rgba(255, 0, 0, 0.5);
@@ -553,7 +553,7 @@ div {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 div {
@@ -577,7 +577,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -598,7 +598,7 @@ For example:
 同様に、もしクオートされていない文字列にクオートされた文字列が追加された場合、
 （`+`の左側がクオートされていない文字列）
 演算の結果はクオートされていない文字列になります。
-例えば：
+例えば。
 
 ```scss
 p:before {
@@ -609,7 +609,7 @@ p:before {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p:before {
@@ -621,7 +621,7 @@ By default, if two values are placed next to one another,
 they are concatenated with a space:
 
 デフォルトでは、2つの値が他の値に続いている時、
-スペースで連結されます：
+スペースで連結されます。
 
 ```scss
 p {
@@ -631,7 +631,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -642,7 +642,7 @@ Within a string of text, #{} style interpolation can be used to
 place dynamic values within the string:
 
 テキストの文字列の中では、#{}スタイルの補間は
-文字列の中で直接値として利用できます：
+文字列の中で直接値として利用できます。
 
 ```scss
 p:before {
@@ -652,7 +652,7 @@ p:before {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p:before {
@@ -661,7 +661,7 @@ p:before {
 
 Null values are treated as empty strings for string interpolation:
 
-ヌル値は文字列補間で空文字として扱われます：
+ヌル値は文字列補間で空文字として扱われます。
 
 ```scss
 $value: null;
@@ -672,7 +672,7 @@ p:before {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p:before {
@@ -706,7 +706,7 @@ Instead, they're manipulated using the
 
 Parentheses can be used to affect the order of operations:
 
-カッコは演算の順序を操作することができます：
+カッコは演算の順序を操作することができます。
 
 ```scss
 p {
@@ -716,7 +716,7 @@ p {
 
 is compiled to:
 
-以下のようにコンパイルされます：
+以下のようにコンパイルされます。
 
 ```css
 p {
@@ -741,7 +741,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -756,7 +756,7 @@ Sass functions can also be called using explicit keyword arguments.
 The above example can also be written as:
 
 Sassの関数は明示的にキーワード引数を使うことでも呼び出せます。
-先ほどの例はこのようにも記述できます：
+先ほどの例はこのようにも記述できます。
 
 ```scss
 p {
@@ -794,7 +794,7 @@ You can also use SassScript variables in selectors
 and property names using #{} interpolation syntax:
 
 SassScriptの変数は、
-セレクタやプロパティ名でも#{}の補間記法で利用できます：
+セレクタやプロパティ名でも#{}の補間記法で利用できます。
 
 ```scss
 $name: foo;
@@ -806,7 +806,7 @@ p.#{$name} {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p.foo {
@@ -823,7 +823,7 @@ For example:
 ほとんどの場合、変数を利用するよりも有効ということはないですが、
 `#{}`を利用することは、
 どんな演算も通常のCSSと同様に扱われるということになります。
-例えば：
+例えば。
 
 ```scss
 p {
@@ -835,7 +835,7 @@ p {
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 p {
@@ -860,7 +860,7 @@ but if it doesn't have a value yet, it will be given one.
 
 For example:
 
-例えば：
+例えば。
 
 ```scss
 $content: "First content";
@@ -875,7 +875,7 @@ $new_content: "First time reference" !default;
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 #main {
@@ -885,7 +885,7 @@ is compiled to:
 
 Variables with `null` values are treated as unassigned by !default:
 
-変数がヌル値をもつ場合は !defaultによって未定義として扱われます：
+変数がヌル値をもつ場合は !defaultによって未定義として扱われます。
 
 ```scss
 $content: null;
@@ -898,7 +898,7 @@ $content: "Non-null content" !default;
 
 is compiled to:
 
-は以下のようにコンパイルされます：
+は以下のようにコンパイルされます。
 
 ```css
 #main {
