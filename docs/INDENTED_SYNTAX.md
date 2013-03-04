@@ -21,9 +21,7 @@ and instead of using semicolons to separate statements it uses newlines.
 This usually leads to substantially less text
 when saying the same thing.
 
-Sassのインデント構文（単に”Sass”として知られる）は、より簡潔に書けるように設計され、
-
-
+Sassのインデント構文（単に”Sass”として知られる）は、CSSベースのSCSS構文に代わるものとして、より簡潔に、より美しく記述できるように設計されています。ただ、CSSとの互換性はありません。スタイルブロックを区切るために`{`と`}` を使用する代わりに、インデントを使用し、プロパティはセミコロンで区切る代わりに改行を使用します。これにより冗長な表現を避けることができ、確実にタイプする文字数を減らすことができます。
 
 Each statement in Sass, such as property declarations and selectors,
 must be placed on its own line.
@@ -31,18 +29,23 @@ In addition, everything that would be within `{` and `}` after a statement
 must be on a new line and indented one level deeper than that statement.
 For example, this CSS:
 
+プロパティ宣言やセレクタのようなSassにおける各ステートメントは、一行ごとに記述しなければなりません。さらに`{`と`}`内のステートメントは改行しインデントを一つ深くしなければなりません。
+例えばこのCSSは、
+
     #main {
       color: blue;
       font-size: 0.3em;
     }
 
 would be this Sass:
+Sassだとこのようになる。
 
     #main
       color: blue
       font-size: 0.3em
 
 Similarly, this SCSS:
+同様にこのCSSは、
 
     #main {
       color: blue;
@@ -60,6 +63,7 @@ Similarly, this SCSS:
     }
 
 would be this Sass:
+Sassだとこのようになる。
 
     #main
       color: blue
@@ -74,6 +78,8 @@ would be this Sass:
 
 ## Sass Syntax Differences
 
+## Sass構文の違い
+
 In general, most CSS and SCSS syntax
 works straightforwardly in Sass
 by using newlines instead of semicolons
@@ -81,12 +87,19 @@ and indentation instead of braces.
 However, there are some cases where there are differences or subtleties,
 which are detailed below.
 
+一般的に、セミコロンの代わりに改行、ブレスの代わりにインデントを使用すれば、ほとんどのCSSとSCSSはSass構文上でも問題なく機能します。しかし、いくつかのケースにおいて差異や微妙な点がいくつかありますので、それは後述します。
+
 ## Property Synax
+
+## プロパティ構文
 
 The indented syntax supports two ways of declaring CSS properties.
 The first is just like CSS, except without the semicolon.
 The second, however, places the colon *before* the property name.
 For example:
+
+インデント構文は2種類のプロパティ宣言に対応しています。最初のひとつはCSSとセミコロンを除いて全く同じです。もうひとつはコロンを使用しますが、それはプロパティ名の前に記述する方法です。
+例：
 
     #main
       :color blue
@@ -95,6 +108,8 @@ For example:
 By default, both ways may be used.
 However, the {file:SASS_REFERENCE.md#property_syntax-option `:property_syntax` option}
 may be used to specify that only one property syntax is allowed.
+
+デフォルトで両方とも使用出来ます。
 
 ### Multiline Selectors
 
