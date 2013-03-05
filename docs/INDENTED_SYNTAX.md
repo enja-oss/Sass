@@ -109,14 +109,19 @@ By default, both ways may be used.
 However, the {file:SASS_REFERENCE.md#property_syntax-option `:property_syntax` option}
 may be used to specify that only one property syntax is allowed.
 
-デフォルトで両方とも使用出来ます。
+デフォルトで両方とも使用出来ますが、{file:SASS_REFERENCE.md#property_syntax-option `:property_syntax`オプション}はどちらかひとつのプロパティ構文しか指定できません。
 
 ### Multiline Selectors
+
+### 複数行セレクタ
 
 Normally in the indented syntax, a single selector must take up a single line.
 There is one exception, however:
 selectors can contain newlines as long as they only appear after commas.
 For example:
+
+インデント構文では通常ひとつのセレクタはひとつの行で記述されますが、例外があります。コンマを記述すれば改行することができ複数のセレクタを記述することができます。
+例：
 
     .users #userTab,
     .posts #postTab
@@ -124,6 +129,8 @@ For example:
       height: 30px
 
 ### Comments
+
+### コメント
 
 Like everything else in the indented syntax,
 comments are line-based.
