@@ -270,7 +270,7 @@ before the containing list is turned into CSS.
 もしリストが、`1px 2px () 3px`または`1px 2px null 3px`といった
 空のリストやヌル値を内包する場合、
 空のリストやヌル値は、内包しているリストが
-CSSに置き換えられる前に排除されます。
+CSSに置き換えられる前に削除されます。
 
 ### Operations
 
@@ -359,9 +359,7 @@ They are:
 2. 値がカッコで囲まれているとき
 3. 値が四則演算の一部に存在しているとき
 
-For example:
-
-例えば。
+例えば
 
 ```scss
 p {
@@ -390,8 +388,9 @@ you can use `#{}` to insert them.
 For example:
 
 もし、CSSの`/`と一緒に変数を利用したい場合は、
-挿入するときに`#{}`を利用できます。
-例えば。
+挿入するときに`#{}`を利用します。
+
+例えば
 
 ```scss
 p {
@@ -424,7 +423,8 @@ For example:
 色の値も対象にしています。
 これは、順番に赤、緑、青の要素ごとに
 計算するという意味です。
-例えば。
+
+例えば
 
 ```scss
 p {
@@ -446,8 +446,8 @@ p {
 Often it's more useful to use {Sass::Script::Functions color functions}
 than to try to use color arithmetic to achieve the same effect.
 
-度々、{Sass::Script::Functions color functions}を利用するほうが、
-色演算で同じ効果を出そうとするよりも有益なことがあります。
+しかし多くの場合、{Sass::Script::Functions color functions}のほうが、
+色演算よりも便利です。
 
 Arithmetic operations also work between numbers and colors,
 also piecewise.
@@ -455,7 +455,8 @@ For example:
 
 四則演算は色の値と数値の間でも動作します、
 こちらも切り分けます。
-例えば。
+
+例えば
 
 ```scss
 p {
@@ -486,7 +487,8 @@ For example:
 または{Sass::Script::Functions#hsla hsla}機能で生成された)アルファチャンネル
 を含む色の値で四則演算を行う場合、アルファの値は同じである必要があります。
 演算はアルファの値には作用しません。
-例えば。
+
+例えば
 
 ```scss
 p {
@@ -510,8 +512,9 @@ For example:
 
 アルファチャンネルは{Sass::Script::Functions#opacify opacify}と
 {Sass::Script::Functions#transparentize transparentize}の機能を利用して
-調整されます。
-例えば。
+調整できます。
+
+例えば
 
 ```scss
 $translucent-red: rgba(255, 0, 0, 0.5);
@@ -541,7 +544,8 @@ IEのフィルターは全色がアルファレイヤーに含まれる必要が
 そして#AABBCCDDの厳密な書式になります。
 {Sass::Script::Functions#ie_hex_str ie_hex_str}機能を利用することで
 より簡易に色の変換を行えます。
-例えば。
+
+例えば
 
 ```scss
 $translucent-red: rgba(255, 0, 0, 0.5);
@@ -592,13 +596,14 @@ Likewise, if an unquoted string is added to a quoted string
 the result is an unquoted string.
 For example:
 
-注意点としては、もしクオートされた文字列にクオートされていない文字列が追加された場合、
-（`+`の左側がクオートされた文字列）
+注意点としては、もしクオートされた文字列にクオートされていない文字列が追加された場合
+（`+`の左側がクオートされた文字列）、
 演算の結果はクオートされた文字列になります。
-同様に、もしクオートされていない文字列にクオートされた文字列が追加された場合、
-（`+`の左側がクオートされていない文字列）
+同様に、もしクオートされていない文字列にクオートされた文字列が追加された場合
+（`+`の左側がクオートされていない文字列）、
 演算の結果はクオートされていない文字列になります。
-例えば。
+
+例えば
 
 ```scss
 p:before {
@@ -620,8 +625,7 @@ p:before {
 By default, if two values are placed next to one another,
 they are concatenated with a space:
 
-デフォルトでは、2つの値が他の値に続いている時、
-スペースで連結されます。
+デフォルトでは、2つの値が連続している場合、それらはスペースで連結されます。
 
 ```scss
 p {
@@ -686,7 +690,7 @@ p:before {
 SassScript supports `and`, `or`, and `not` operators
 for boolean values.
 
-SassScriptは、`and` `or` `not` 演算がブール値で利用できます。
+SassScriptは、`and` `or` `not` 演算子がブール値で利用できます。
 
 #### List Operations
 
@@ -697,7 +701,7 @@ Instead, they're manipulated using the
 [list functions](Sass/Script/Functions.html#list-functions).
 
 リストは特殊な演算をサポートしていません。
-そのかわりに、[リスト機能](Sass/Script/Functions.html#list-functions)
+そのかわりに、[リスト関数](Sass/Script/Functions.html#list-functions)
 を利用することで操作できます。
 
 ### Parentheses
@@ -730,8 +734,8 @@ p {
 SassScript defines some useful functions
 that are called using the normal CSS function syntax:
 
-SassScriptは通常のCSSの記法で利用できる
-有用な関数をいくつか定義しています。
+SassScriptではCSSの関数と同じ構文で利用できる、
+いくつかの便利な関数を定義しています。
 
 ```scss
 p {
@@ -755,7 +759,7 @@ p {
 Sass functions can also be called using explicit keyword arguments.
 The above example can also be written as:
 
-Sassの関数は明示的にキーワード引数を使うことでも呼び出せます。
+Sassの関数は明示的なキーワード引数を使うことでも呼び出せます。
 先ほどの例はこのようにも記述できます。
 
 ```scss
@@ -781,8 +785,8 @@ Since the named arguments are variable names, underscores and dashes can be used
 See {Sass::Script::Functions} for a full listing of Sass functions and their argument names,
 as well as instructions on defining your own in Ruby.
 
-にSass関数とその名前付き引数の全てのリストがありますので、
-自分でRuby内で定義した命令と同様に、{Sass::Script::Functions}を把握してください。
+{Sass::Script::Functions} にすべてのSass関数とその引数名が紹介されています。
+また、Rubyで独自の関数を定義する方法も書かれています。
 
 {Sass::Script::Functions}
 
@@ -820,10 +824,11 @@ will be treated as plain CSS.
 For example:
 
 `#{}`を使うことで、プロパティの値に対してSassScriptを適用することも可能になります。
-ほとんどの場合、変数を利用するよりも有効ということはないですが、
+ほとんどの場合、変数よりも便利というわけではないですが、
 `#{}`を利用することは、
 どんな演算も通常のCSSと同様に扱われるということになります。
-例えば。
+
+例えば
 
 ```scss
 p {
@@ -844,7 +849,7 @@ p {
 
 ### Variable Defaults: `!default`
 
-### 変数のデフォルト: `!default`
+### 変数の規定値: `!default`
 
 You can assign to variables if they aren't already assigned
 by adding the `!default` flag to the end of the value.
@@ -860,7 +865,8 @@ but if it doesn't have a value yet, it will be given one.
 
 For example:
 
-例えば。
+
+例えば
 
 ```scss
 $content: "First content";
@@ -885,7 +891,7 @@ is compiled to:
 
 Variables with `null` values are treated as unassigned by !default:
 
-変数がヌル値をもつ場合は !defaultによって未定義として扱われます。
+変数がヌル値をもつ場合、値は未割り当てとして扱われ、!defaultの値が用いられます。
 
 ```scss
 $content: null;
