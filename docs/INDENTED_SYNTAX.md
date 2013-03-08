@@ -38,7 +38,7 @@ For example, this CSS:
     }
 
 would be this Sass:
-Sassだとこのようになる。
+Sassだとこのようになります。
 
     #main
       color: blue
@@ -63,7 +63,7 @@ Similarly, this SCSS:
     }
 
 would be this Sass:
-Sassだとこのようになる。
+Sassだとこのようになります。
 
     #main
       color: blue
@@ -87,7 +87,8 @@ and indentation instead of braces.
 However, there are some cases where there are differences or subtleties,
 which are detailed below.
 
-一般的に、セミコロンの代わりに改行、ブレスの代わりにインデントを使用すれば、ほとんどのCSSとSCSSはSass構文上でも問題なく機能します。しかし、いくつかのケースにおいて差異や微妙な点がいくつかありますので、それは後述します。
+セミコロンを改行に、ブレースをインデントにすれば、ほとんどのCSSとSCSSはSass構文として問題なく機能します。しかし、いくつかのケースにおいて差異や微妙な点がいくつかありますので、それは後述します。
+
 
 ## Property Synax
 
@@ -109,7 +110,7 @@ By default, both ways may be used.
 However, the {file:SASS_REFERENCE.md#property_syntax-option `:property_syntax` option}
 may be used to specify that only one property syntax is allowed.
 
-デフォルトで両方とも使用出来ますが、{file:SASS_REFERENCE.md#property_syntax-option `:property_syntax`オプション}はどちらかひとつのプロパティ構文しか指定できません。
+デフォルトで両方とも使用できますが、{file:SASS_REFERENCE.md#property_syntax-option `:property_syntax`オプション}はどちらかひとつのプロパティ構文しか指定できません。
 
 ### Multiline Selectors
 
@@ -120,7 +121,7 @@ There is one exception, however:
 selectors can contain newlines as long as they only appear after commas.
 For example:
 
-インデント構文では通常ひとつのセレクタはひとつの行で記述されますが、例外があります。コンマを記述すれば改行することができ複数のセレクタを記述することができます。
+インデント構文では通常、ひとつのセレクタはひとつの行に記述しますが、例外があります。コンマを記述すればその後で改行できます。
 例：
 
     .users #userTab,
@@ -138,7 +139,7 @@ This means that they don't work the same way as in SCSS.
 They must take up an entire line,
 and they also encompass all text nested beneath them.
 
-インデント構文のすべての文法同様にコメントもまた行単位です。これはSCCS構文上では同じように機能しないことを意味しています。インデント構文のコメントは行全体を必要とし、インデントされたすべてのテキストを含みます。
+インデント構文のすべての文法同様にコメントもまた行単位です。これはSCSS構文上では同じように機能しないことを意味しています。インデント構文のコメントは行全体を必要とし、インデントされたすべてのテキストを含みます。
 
 Like SCSS, the indented syntax supports two kinds of comments.
 Comments beginning with `/*` are preserved in the CSS output,
@@ -146,7 +147,7 @@ although unlike SCSS they don't require a closing `*/`.
 Comments beginning with `//` are removed entirely.
 For example:
 
-SCSS構文同様に、インデント構文もまた2種類のコメントをサポートしています。`/*`で始まるコメントはコンパイルされたCSS上でも出力されますが、SCCSと違うのは`*/`を必要としないことです。`//`で始まるコメントはコンパイルされると完全に削除されます。
+SCSS構文同様に、インデント構文もまた2種類のコメントをサポートしています。`/*`で始まるコメントはコンパイルされたCSS上でも出力されますが、SCSSと違うのは`*/`を必要としないことです。`//`で始まるコメントはコンパイルされると完全に削除されます。
 例：
 
     /* This comment will appear in the CSS output.
@@ -259,7 +260,7 @@ that have since been changed.
 Some of the old syntax still works, though,
 so it's documented here.
 
-インデント構文が作られてから月日が流れているので、文法の変更を伴う旧バージョンが存在します。その古い文法は今なお機能しています。ドキュメントをこちらです。
+インデント構文は結構な歴史があるため、バージョンの変遷で変わった構文が存在します。しかし、いくつかの古い構文は今も機能します。ここではそのような構文をまとめています。
 
 **Note that this syntax is not recommended
 for use in new Sass files**.
@@ -299,13 +300,3 @@ This had no difference in functionality;
 it was a purely aesthetic change.
 
 `!`は`$`の代わりに変数の接頭辞として使用されていました。これによる機能的差異は生じません。ただ純粋に美的な変更です。
-
-
-
-
-
-
-
-
-
-
