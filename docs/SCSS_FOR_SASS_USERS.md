@@ -26,7 +26,7 @@ For example, a simple rule in Sass:
 
 SCSSはCSSを拡張したものなので、CSS上で動作するものはすべてSCSS上でも動作します。これは、SassユーザーにとってSCCSを理解するためには、Sass拡張がどのように機能しているか理解するだけで良いということを意味しています。これらの多く、つまり、変数、親参照、ディレクティブのようなものは同じように機能します。SassとSCSSの違いというのは、改行とインデントの代わりにセミコンロンとブラケットを必要とするかしないかだけです。
 
-例：Sassのシンプルな規則
+例えば、次のようにSassで書かれたシンプルな規則があります。
 
     #sidebar
       width: 30%
@@ -34,7 +34,7 @@ SCSSはCSSを拡張したものなので、CSS上で動作するものはすべ�
 
 could be converted to SCSS just by adding brackets and semicolons:
 
-ブラケットとセミコロンを追加するだけでSCSSに変換することが可能：
+これはブラケットとセミコロンを追加するだけでSCSSに変換できます。
 
     #sidebar {
       width: 30%;
@@ -85,7 +85,7 @@ To nest properties,
 simply create a new property set
 after an existing property's colon:
 
-プロパティを入れ子にするために、既存のプロパティコロンのアロに新しいプロパティセットを記述します。
+プロパティを入れ子にするには、今あるプロパティのコロンの後に新しいプロパティセットを記述します。
 
     #footer {
       border: {
@@ -130,7 +130,7 @@ A mixin is used with the `@include` directive:
 This syntax is also available in the indented syntax,
 although the old `=` and `+` syntax still works.
 
-この構文はインデント構文上でも使用することが可能で、`=` と `+`の古い構文が機能します。
+この構文はSass構文でも利用できますが、古い`=`と`=`の構文も引き続き利用できます。
 
 This is rather verbose compared to the `=` and `+` characters used in Sass syntax.
 This is because the SCSS format is designed for CSS compatibility rather than conciseness,
@@ -152,7 +152,7 @@ which are preserved where possible in the output.
 These comments can have whatever formatting you like;
 Sass will do its best to format them nicely.
 
-Sass同様に、SCSSはコンパイルしたCSS上でも保持されるコメントと保持されないコメント両方共にサポートしています。しかしながら、SCSSのコメントはいくぶんか複雑です。標準の複数行CSSコメント`/* */`をサポートし、それはコンパイルされたCSS上でも保持されます。このコメントはあなたが自由にフォーマットを決めることができ、Sassはそのフォーマットをうまく出力します。
+Sass同様に、SCSSはコンパイルしたCSS上でも保持されるコメントと保持されないコメント両方共にサポートしています。しかしながら、SCSSのコメントはより柔軟です。標準の複数行CSSコメント`/* */`をサポートし、それはコンパイルされたCSS上でも保持されます。このコメントはあなたが自由にフォーマットを決めることができ、Sassはそのフォーマットをうまく出力します。
 
 SCSS also uses `//` for comments that are thrown away, like Sass.
 Unlike Sass, though, `//` comments in SCSS may appear anywhere
