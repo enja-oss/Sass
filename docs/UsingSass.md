@@ -56,64 +56,27 @@ Sassのスタイルシートはviewsと同じようには動作しません。�
 
 フレームワークがなければ、Sassは`.sass-cache`ディレクトリ内にキャッシュされたテンプレートを置きます。RailsやMerbでは、`tmp/sass-cache`になります。ディレクトリは[`:cache_location`](#cache_location-option)でカスタマイズすることができます。Sassのキャッシュを全く必要としないなら、[`:cache`](#cache-option)オプションを`false`に設定してください。
 
-### Options
-
 ### オプション
-
-Options can be set by setting the {Sass::Plugin::Configuration#options Sass::Plugin#options} hash
-in `environment.rb` in Rails or `config.ru` in Rack...
 
 オプションはRailsの`environment.rb`やRackの`config.ru`にある{Sass::Plugin::Configuration#options Sass::Plugin#options}ハッシュによって設定できます。
 
     Sass::Plugin.options[:style] = :compact
 
-...or by setting the `Merb::Plugin.config[:sass]` hash in `init.rb` in Merb...
-
 もしくは、Merbの`init.rb`で`Merb::Plugin.config[:sass]`ハッシュを設定します。
 
     Merb::Plugin.config[:sass][:style] = :compact
 
-...or by passing an options hash to {Sass::Engine#initialize}.
-All relevant options are also available via flags
-to the `sass` and `scss` command-line executables.
-Available options are:
-
 もしくは、{Sass::Engine#initialize}にオプションのハッシュを渡します。関連する全てのオプションは、`sass`か`scss`のコマンドラインの実行時にフラグを通して利用可能です。利用可能なオプションは次の通りです。
-
-{#style-option} `:style`
-: Sets the style of the CSS output.
-  See [Output Style](#output_style).
 
 {#style-option} `:style`
 : CSSの出力スタイルを設定します。
   [Output Style](#output_style)を見てください。
 
 {#syntax-option} `:syntax`
-: The syntax of the input file, `:sass` for the indented syntax
-  and `:scss` for the CSS-extension syntax.
-  This is only useful when you're constructing {Sass::Engine} instances yourself;
-  it's automatically set properly when using {Sass::Plugin}.
-  Defaults to `:sass`.
-
-{#syntax-option} `:syntax`
 : 入力ファイルの構文で、`:sass`はインデントの構文、`:scss`はCSS拡張の構文です。
   これは{Sass::Engine}を初期化する場合にのみ利用可能です。
   {Sass::Plugin}を使う場合は、適切な構文が自動的に設定されます。
   デフォルトは`:sass`です。
-
-{#property_syntax-option} `:property_syntax`
-: Forces indented-syntax documents to use one syntax for properties.
-  If the correct syntax isn't used, an error is thrown.
-  `:new` forces the use of a colon or equals sign
-  after the property name.
-  For example: `color: #0f3`
-  or `width: $main_width`.
-  `:old` forces the use of a colon
-  before the property name.
-  For example: `:color #0f3`
-  or `:width $main_width`.
-  By default, either syntax is valid.
-  This has no effect on SCSS documents.
 
 {#property_syntax-option} `:property_syntax`
 : インデント構文の文書で、プロパティの書式を1つに強制します。
@@ -125,38 +88,15 @@ Available options are:
   これはSCSSの文書では効果がありません。
 
 {#cache-option} `:cache`
-: Whether parsed Sass files should be cached,
-  allowing greater speed. Defaults to true.
-
-{#cache-option} `:cache`
 : 高速化のために、パースされたSassファイルをキャッシュするかどうか。
   デフォルトはtrueです。
-
-{#read_cache-option} `:read_cache`
-: If this is set and `:cache` is not,
-  only read the Sass cache if it exists,
-  don't write to it if it doesn't.
 
 {#read_cache-option} `:read_cache`
 : このオプションが設定されていて`:cache`が設定されていない場合、Sassキャッシュの読み込みはそれが存在する場合にのみ行われます。キャッシュが存在していなくても、書き込みは行われません。
 
 {#cache_store-option} `:cache_store`
-: If this is set to an instance of a subclass of {Sass::CacheStores::Base},
-  that cache store will be used to store and retrieve
-  cached compilation results.
-  Defaults to a {Sass::CacheStores::Filesystem} that is
-  initialized using the [`:cache_location` option](#cache_location-option).
-
-{#cache_store-option} `:cache_store`
 : このオプションに{Sass::CacheStores::Base}のサブクラスのインスタンスが設定されると、キャッシュされたコンパイル結果の保存や検索にそのキャッシュストアが使われます。
   デフォルトは{Sass::CacheStores::Filesystem}で、[`:cache_location` option](#cache_location-option)を使って初期化されます。
-
-{#never_update-option} `:never_update`
-: Whether the CSS files should never be updated,
-  even if the template file changes.
-  Setting this to true may give small performance gains.
-  It always defaults to false.
-  Only has meaning within Rack, Ruby on Rails, or Merb.
 
 {#never_update-option} `:never_update`
 : テンプレートファイルを変更してもCSSファイルが更新されないかどうか。
@@ -165,25 +105,9 @@ Available options are:
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
 
 {#always_update-option} `:always_update`
-: Whether the CSS files should be updated every
-  time a controller is accessed,
-  as opposed to only when the template has been modified.
-  Defaults to false.
-  Only has meaning within Rack, Ruby on Rails, or Merb.
-
-{#always_update-option} `:always_update`
 : テンプレートが変更された場合だけでなく、コントローラーにアクセスされるたびにCSSファイルを更新するかどうか。
   デフォルトはfalseです。
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
-
-{#always_check-option} `:always_check`
-: Whether a Sass template should be checked for updates every
-  time a controller is accessed,
-  as opposed to only when the server starts.
-  If a Sass template has been updated,
-  it will be recompiled and will overwrite the corresponding CSS file.
-  Defaults to false in production mode, true otherwise.
-  Only has meaning within Rack, Ruby on Rails, or Merb.
 
 {#always_check-option} `:always_check`
 : サーバーの起動時だけでなく、コントローラーにアクセスされるたびにSassテンプレートがチェックされるかどうか。
@@ -192,45 +116,13 @@ Available options are:
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
 
 {#poll-option} `:poll`
-: When true, always use the polling backend for {Sass::Plugin::Compiler#watch}
-  rather than the native filesystem backend.
-
-{#poll-option} `:poll`
 : trueの場合、{Sass::Plugin::Compiler#watch}でネイティブのファイルシステムのバックエンドでなくポーリングのバックエンドを常に利用します。
-
-{#full_exception-option} `:full_exception`
-: Whether an error in the Sass code
-  should cause Sass to provide a detailed description
-  within the generated CSS file.
-  If set to true, the error will be displayed
-  along with a line number and source snippet
-  both as a comment in the CSS file
-  and at the top of the page (in supported browsers).
-  Otherwise, an exception will be raised in the Ruby code.
-  Defaults to false in production mode, true otherwise.
-  Only has meaning within Rack, Ruby on Rails, or Merb.
 
 {#full_exception-option} `:full_exception`
 : Sassのエラーの詳細な説明を生成されたCSSファイル内に提供するかどうか。
   trueが設定されると、エラーは行番号とソースの断片とともに、CSSファイル中のコメントとページの一番上（サポートされているブラウザの場合）の両方に表示されます（訳注: before擬似要素とcontentプロパティがサポートされているブラウザではエラーがブラウザ上に表示される）。
   デフォルトはproductionモードではfalseで、そうでなければtrueです。
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
-
-{#template_location-option} `:template_location`
-: A path to the root sass template directory for your application.
-  If a hash, `:css_location` is ignored and this option designates
-  a mapping between input and output directories.
-  May also be given a list of 2-element lists, instead of a hash.
-  Defaults to `css_location + "/sass"`.
-  Only has meaning within Rack, Ruby on Rails, or Merb.
-  Note that if multiple template locations are specified, all
-  of them are placed in the import path, allowing you to import
-  between them.
-  **Note that due to the many possible formats it can take,
-  this option should only be set directly, not accessed or modified.
-  Use the {Sass::Plugin::Configuration#template_location_array Sass::Plugin#template_location_array},
-  {Sass::Plugin::Configuration#add_template_location Sass::Plugin#add_template_location},
-  and {Sass::Plugin::Configuration#remove_template_location Sass::Plugin#remove_template_location} methods instead**.
 
 : アプリケーションにおけるsassテンプレートのルートディレクトリのパス。
   ハッシュならば、`:css_location`は無視され、このオプションは入力と出力ディレクトリのマッピングを指定します。
@@ -240,23 +132,10 @@ Available options are:
   **多くのフォーマットを取ることができるので、このオプションは直接指定するだけで、アクセスや変更されるべきでないことに注意してください。代わりに{Sass::Plugin::Configuration#template_location_array Sass::Plugin#template_location_array}、{Sass::Plugin::Configuration#add_template_location Sass::Plugin#add_template_location}、{Sass::Plugin::Configuration#remove_template_location Sass::Plugin#remove_template_location}を利用してください。**
 
 {#css_location-option} `:css_location`
-: The path where CSS output should be written to.
-  This option is ignored when `:template_location` is a Hash.
-  Defaults to `"./public/stylesheets"`.
-  Only has meaning within Rack, Ruby on Rails, or Merb.
-
-{#css_location-option} `:css_location`
 : CSSの出力が書き込まれるパス。
   このオプションは`:template_location`がHashの場合無視されます。
   デフォルトは`"./public/stylesheets"`です。
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
-
-{#cache_location-option} `:cache_location`
-: The path where the cached `sassc` files should be written to.
-  Defaults to `"./tmp/sass-cache"` in Rails and Merb,
-  or `"./.sass-cache"` otherwise.
-  If the [`:cache_store` option](#cache_location-option) is set,
-  this is ignored.
 
 {#cache_location-option} `:cache_location`
 : キャッシュされた`sassc`ファイルが書き込まれるパス。
@@ -264,42 +143,17 @@ Available options are:
   [`:cache_store` option](#cache_location-option)が設定されていれば、この設定は無視されます。
 
 {#unix_newlines-option} `:unix_newlines`
-: If true, use Unix-style newlines when writing files.
-  Only has meaning on Windows, and only when Sass is writing the files
-  (in Rack, Rails, or Merb, when using {Sass::Plugin} directly,
-  or when using the command-line executable).
-
-{#unix_newlines-option} `:unix_newlines`
 : trueの場合、ファイル書き込み時にUnix-styleの改行を使います。
   このオプションはWindows環境で、かつSassがファイルに書き込んでいる場合（Rack、Rails、Merbで{Sass::Plugin}を直接使う場合、もしくはコマンドラインから実行する場合）にのみ有効です。
-
-{#filename-option} `:filename`
-: The filename of the file being rendered.
-  This is used solely for reporting errors,
-  and is automatically set when using Rack, Rails, or Merb.
 
 {#filename-option} `:filename`
 : レンダリングされるファイルのファイル名。
   エラーレポートだけで使われ、RackやRails、Merbでは自動的に設定されます。
 
 {#line-option} `:line`
-: The number of the first line of the Sass template.
-  Used for reporting line numbers for errors.
-  This is useful to set if the Sass template is embedded in a Ruby file.
-
-{#line-option} `:line`
 : Sassテンプレートの一行目の数。
   エラーの行数表示に使われる。
   RubyファイルにSassテンプレートが埋め込まれている場合に設定すると便利です。
-
-{#load_paths-option} `:load_paths`
-: An array of filesystem paths or importers which should be searched
-  for Sass templates imported with the [`@import`](#import) directive.
-  These may be strings, `Pathname` objects, or subclasses of {Sass::Importers::Base}.
-  This defaults to the working directory and, in Rack, Rails, or Merb,
-  whatever `:template_location` is.
-  The load path is also informed by {Sass.load_paths}
-  and the `SASS_PATH` environment variable.
 
 {#load_paths-option} `:load_paths`
 : [`@import`](#import)ディレクティブでインポートされるSassテンプレートの検索パスをファイルシステムのパスかインポーターの配列で指定します。
@@ -308,26 +162,10 @@ Available options are:
   ロードパスは`SASS_PATH`環境変数と{Sass.load_paths}からも設定することができます。
 
 {#filesystem_importer-option} `:filesystem_importer`
-: A {Sass::Importers::Base} subclass used to handle plain string load paths.
-  This should import files from the filesystem.
-  It should be a Class object inheriting from {Sass::Importers::Base}
-  with a constructor that takes a single string argument (the load path).
-  Defaults to {Sass::Importers::Filesystem}.
-
-{#filesystem_importer-option} `:filesystem_importer`
 : {Sass::Importers::Base}のサブクラスは文字列のロードパスを処理するために利用されます。
   これはファイルシステムからファイルをインポートします。
   コンストラクタで一つの文字列（ロードパス）を引数に取る{Sass::Importers::Base}を継承したクラスのオブジェクトを指定します。
   デフォルトは{Sass::Importers::Filesystem}です。
-
-{#line_numbers-option} `:line_numbers`
-: When set to true, causes the line number and file
-  where a selector is defined to be emitted into the compiled CSS
-  as a comment. Useful for debugging, especially when using imports
-  and mixins.
-  This option may also be called `:line_comments`.
-  Automatically disabled when using the `:compressed` output style
-  or the `:debug_info`/`:trace_selectors` options.
 
 {#line_numbers-option} `:line_numbers`
 : trueに設定すると、セレクタが定義された行番号とファイル名を、コンパイルされたCSSのコメントに出力します。
@@ -336,26 +174,10 @@ Available options are:
   `:compressed`出力スタイルの場合や`:debug_info`/`:trace_selectors`オプションを指定したときは自動的に無効になります。
 
 {#trace_selectors-option} `:trace_selectors`
-: When set to true, emit a full trace of imports and mixins before
-  each selector. This can be helpful for in-browser debugging of
-  stylesheet imports and mixin includes. This option supersedes
-  the `:line_comments` option and is superseded by the
-  `:debug_info` option. Automatically disabled when using the
-  `:compressed` output style.
-
-{#trace_selectors-option} `:trace_selectors`
 : trueに設定すると、各セレクタの前にインポートとミックスインの全てのトレースを出力します。
   これはスタイルシートのインポートやミックスインのインクルードをブラウザでデバッグするときに役立ちます。
   このオプションは`:line_comments`オプションより優先され、`:debug_info`オプションはこのオプションより優先されます。
   `:compressed`出力形式の場合は自動的に無効になります。
-
-{#debug_info-option} `:debug_info`
-: When set to true, causes the line number and file
-  where a selector is defined to be emitted into the compiled CSS
-  in a format that can be understood by the browser.
-  Useful in conjunction with [the FireSass Firebug extension](https://addons.mozilla.org/en-US/firefox/addon/103988)
-  for displaying the Sass filename and line number.
-  Automatically disabled when using the `:compressed` output style.
 
 {#debug_info-option} `:debug_info`
 : trueに設定すると、セレクタが定義された行番号とファイル名が、コンパイルされたCSSの中にブラウザが理解できる形式で出力されます。
@@ -363,14 +185,7 @@ Available options are:
   `:compressed`出力形式の場合は自動的に無効になります。
 
 {#custom-option} `:custom`
-: An option that's available for individual applications to set
-  to make data available to {Sass::Script::Functions custom Sass functions}.
-
-{#custom-option} `:custom`
 : このオプションは、個々のアプリケーションが{Sass::Script::Functions Sassのカスタム関数で}利用可能なデータを設定するために設けられています。
-
-{#quiet-option} `:quiet`
-: When set to true, causes warnings to be disabled.
 
 {#quiet-option} `:quiet`
 : trueに設定すると、警告が無効になります。
