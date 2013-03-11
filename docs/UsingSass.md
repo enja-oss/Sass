@@ -63,13 +63,13 @@ Sassのスタイルシートはviewsと同じようには動作しません。�
 Options can be set by setting the {Sass::Plugin::Configuration#options Sass::Plugin#options} hash
 in `environment.rb` in Rails or `config.ru` in Rack...
 
-オプションはRailsの`environment.rb`やRackの`config.ru`内で{Sass::Plugin::Configuration#options Sass::Plugin#options}ハッシュによって設定できます。
+オプションはRailsの`environment.rb`やRackの`config.ru`にある{Sass::Plugin::Configuration#options Sass::Plugin#options}ハッシュによって設定できます。
 
     Sass::Plugin.options[:style] = :compact
 
 ...or by setting the `Merb::Plugin.config[:sass]` hash in `init.rb` in Merb...
 
-もしくは、Merbの`init.rb`で`Merb::Plugin.config[:sass]`を設定します。
+もしくは、Merbの`init.rb`で`Merb::Plugin.config[:sass]`ハッシュを設定します。
 
     Merb::Plugin.config[:sass][:style] = :compact
 
@@ -96,9 +96,9 @@ Available options are:
   Defaults to `:sass`.
 
 {#syntax-option} `:syntax`
-: 入力ファイルのシンタックスで、`:sass`はインデントのシンタックス、`:scss`はCSS拡張のシンタックスです。
+: 入力ファイルの構文で、`:sass`はインデントの構文、`:scss`はCSS拡張の構文です。
   これは{Sass::Engine}を初期化する場合にのみ利用可能です。
-  {Sass::Plugin}を使う場合はプロパティは自動的に設定されます。
+  {Sass::Plugin}を使う場合は、適切な構文が自動的に設定されます。
   デフォルトは`:sass`です。
 
 {#property_syntax-option} `:property_syntax`
@@ -116,7 +116,7 @@ Available options are:
   This has no effect on SCSS documents.
 
 {#property_syntax-option} `:property_syntax`
-: インデント形式の文書のプロパティの構文を強制します。
+: インデント構文の文書で、プロパティの書式を1つに強制します。
   正しい構文が使われていない場合にエラーを投げます。
   `:new`はプロパティ名の後にコロンか等号をを使うことを強制します。
   例えば、`color: #0f3`や`width: $main_width`などです。
@@ -138,7 +138,7 @@ Available options are:
   don't write to it if it doesn't.
 
 {#read_cache-option} `:read_cache`
-: このオプションが設定されていて`:cache`が設定されていない場合、Sassのキャッシュが存在していた場合に読み込みだけおこない、キャッシュが存在していなくても書き込みはおこないません。
+: このオプションが設定されていて`:cache`が設定されていない場合、Sassキャッシュの読み込みはそれが存在する場合にのみ行われます。キャッシュが存在していなくても、書き込みは行われません。
 
 {#cache_store-option} `:cache_store`
 : If this is set to an instance of a subclass of {Sass::CacheStores::Base},
@@ -187,7 +187,7 @@ Available options are:
 
 {#always_check-option} `:always_check`
 : サーバーの起動時だけでなく、コントローラーにアクセスされるたびにSassテンプレートがチェックされるかどうか。
-  Sassテンプレートが更新されていたら、再コンパイルして対応するCSSファイルに上書きします。
+  Sassテンプレートが更新されていたら、再コンパイルして対応するCSSファイルを上書きします。
   デフォルトはproductionモードではfalseで、そうでなければtrueです。
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
 
@@ -212,7 +212,7 @@ Available options are:
 
 {#full_exception-option} `:full_exception`
 : Sassのエラーの詳細な説明を生成されたCSSファイル内に提供するかどうか。
-  trueが設定されると、エラーは行番号とソースの断片とともに、CSSファイル中のコメントとページの一番上（サポートされているブラウザの場合）の両方に表示されます（訳注: before擬似要素がサポートされているブラウザではエラーがブラウザ上に表示される）。
+  trueが設定されると、エラーは行番号とソースの断片とともに、CSSファイル中のコメントとページの一番上（サポートされているブラウザの場合）の両方に表示されます（訳注: before擬似要素とcontentプロパティがサポートされているブラウザではエラーがブラウザ上に表示される）。
   デフォルトはproductionモードではfalseで、そうでなければtrueです。
   Rack、Ruby on Rails、Merbの内部でのみ意味があります。
 
@@ -237,7 +237,7 @@ Available options are:
   ハッシュの代わりに2つの要素のリストを与えることもできます。
   デフォルトは`css_location + "/sass"`です。
   複数のテンプレートロケーションが指定された場合、それらの全てがインポートパスに配置され、それらの間でインポートが許可されことに注意してください。
-  多くのフォーマットを取ることができるので、このオプションは直接指定するだけで、アクセスや変更されるべきでないことに注意してください。代わりに{Sass::Plugin::Configuration#template_location_array Sass::Plugin#template_location_array}、{Sass::Plugin::Configuration#add_template_location Sass::Plugin#add_template_location}、{Sass::Plugin::Configuration#remove_template_location Sass::Plugin#remove_template_location}を利用してください。**
+  **多くのフォーマットを取ることができるので、このオプションは直接指定するだけで、アクセスや変更されるべきでないことに注意してください。代わりに{Sass::Plugin::Configuration#template_location_array Sass::Plugin#template_location_array}、{Sass::Plugin::Configuration#add_template_location Sass::Plugin#add_template_location}、{Sass::Plugin::Configuration#remove_template_location Sass::Plugin#remove_template_location}を利用してください。**
 
 {#css_location-option} `:css_location`
 : The path where CSS output should be written to.
@@ -270,8 +270,8 @@ Available options are:
   or when using the command-line executable).
 
 {#unix_newlines-option} `:unix_newlines`
-: trueの場合、ファイルに書き込みしたときUnix-styleの改行を使います。
-  Windowsで、Sassがファイルに書き込んでいる場合（Rack、Rails、Merbで{Sass::Plugin}を直接使うか、コマンドラインから実行する場合）のみ意味があります。
+: trueの場合、ファイル書き込み時にUnix-styleの改行を使います。
+  このオプションはWindows環境で、かつSassがファイルに書き込んでいる場合（Rack、Rails、Merbで{Sass::Plugin}を直接使う場合、もしくはコマンドラインから実行する場合）にのみ有効です。
 
 {#filename-option} `:filename`
 : The filename of the file being rendered.
@@ -330,7 +330,7 @@ Available options are:
   or the `:debug_info`/`:trace_selectors` options.
 
 {#line_numbers-option} `:line_numbers`
-: trueに設定すると、セレクターが定義された行番号とファイルをコンパイルされたCSSの中のコメントに出力します。
+: trueに設定すると、セレクタが定義された行番号とファイル名を、コンパイルされたCSSのコメントに出力します。
   デバッグの際、特にインポートとミックスインを使う場合に便利です。
   このオプションは`:line_comments`とも呼ばれます。
   `:compressed`出力スタイルの場合や`:debug_info`/`:trace_selectors`オプションを指定したときは自動的に無効になります。
@@ -358,8 +358,8 @@ Available options are:
   Automatically disabled when using the `:compressed` output style.
 
 {#debug_info-option} `:debug_info`
-: trueに設定すると、コンパイルされたCSSにセレクタが定義された行番号とファイルがブラウザが理解できる形式で出力されます。
-  Sassのファイル名と行番号を表示するのに[Firebug拡張のFireSass](https://addons.mozilla.org/en-US/firefox/addon/103988)と併用すると便利です。
+: trueに設定すると、セレクタが定義された行番号とファイル名が、コンパイルされたCSSの中にブラウザが理解できる形式で出力されます。
+  [Firebug拡張のFireSass](https://addons.mozilla.org/en-US/firefox/addon/103988)と一緒に使うと、Sassのファイル名と行番号が表示されて便利です。
   `:compressed`出力形式の場合は自動的に無効になります。
 
 {#custom-option} `:custom`
@@ -367,7 +367,7 @@ Available options are:
   to make data available to {Sass::Script::Functions custom Sass functions}.
 
 {#custom-option} `:custom`
-: 個々のアプリケーションが{Sass::Script::Functions Sassのカスタム関数で}利用するためのデータを設定するために利用可能なオプションです。
+: このオプションは、個々のアプリケーションが{Sass::Script::Functions Sassのカスタム関数で}利用可能なデータを設定するために設けられています。
 
 {#quiet-option} `:quiet`
 : When set to true, causes warnings to be disabled.
