@@ -11,8 +11,8 @@ These have various effects in Sass, detailed below.
 See also [control directives](#control_directives)
 and [mixin directives](#mixins).
 
-Sassは、ディレクティブとして知られているSass仕様の全てのCSS3の `@` ルールをサポートしています。
-ディレクティブは、Sassでは様々な機能を持っていて、詳しくは下記のようになっています。
+Sassは、ディレクティブというSass仕様のいくつかの追加機能を全てのCSS3の `@` ルールをサポートしています。
+ディレクティブは、Sassにおいて様々な機能を持っていて、詳しくは後述します。
 [コントロールディレクティブ](#control_directives)と[ミックスインディレクティブ](#mixins)を参照して下さい。
 
 ### `@import` {#import}
@@ -144,7 +144,7 @@ You can then import these files without using the underscore.
 インポートしたいが、CSSファイルにコンパイルしたくないSCSSファイルやSassファイルがある場合、
 ファイル名の最初にアンダースコアを付けます。
 こうすることで、アンダースコアを付けたファイルをCSSファイルにコンパイルしないようにSassに指示します。
-アンダースコアを付けずにこれらのファイルをインポートすることはできます。
+アンダースコアを付けずにこれらのファイルをインポートすることができます。
 
 For example, you might have `_colors.scss`.
 Then no `_colors.css` file would be created,
@@ -163,8 +163,8 @@ Note that you may not include a partial and a non-partial with the same name in
 the same directory. For example, `_colors.scss` may not exist alongside
 `colors.scss`.
 
-同じディレクトリに同じ名前のパーシャルファイルとパーシャルファイルではないファイルを含ませたくない場合は注意が必要です。
-例えば `_colors.scss` は、 `colors.scss` と同じディレクトリに一緒に存在しない場合があります。
+同じ名前のパーシャルファイルとパーシャルファイルではないファイルを同じディレクトリにないように注意して下さい。
+例えば `_colors.scss` は、 `colors.scss` と同じディレクトリに置かないようにして下さい。
 
 #### Nested `@import` {#nested-import}
 
@@ -177,8 +177,8 @@ Like a base-level `@import`, this includes the contents of the `@import`ed file.
 However, the imported rules will be nested in the same place as the original `@import`.
 
 ドキュメントの最上位レベルに `@import` を定義することが一番使いやすい場合が多いですが、
-CSSルールや `@media` ルール内に @import を含めることができます。
-ベースレベルの `@import` のように、これは `@import` されたファイルの内容が含まれています。
+CSSのルール内や `@media` ルール内に @import を含めることができます。
+最上位レベルで `@import` した時のように、 `@import` されたファイルの内容を含んでいます。
 しかし、インポートされたルールは、元の `@import` と同じ場所でネストされます。
 
 For example, if `example.scss` contains
@@ -209,12 +209,12 @@ Directives that are only allowed at the base level of a document,
 like `@mixin` or `@charset`, are not allowed in files that are `@import`ed
 in a nested context.
 
-`@mixin` や `@charset` のようなディレクティブは、ドキュメントのベースレベルでしか定義することができません。
-これらのディレクティブは、ネストされたコンテキストで `@import` されたファイルを定義することができません。
+`@mixin` や `@charset` のようなディレクティブは、ドキュメントの最上位レベルでしか定義することができず、
+これらのディレクティブは、ネストされたコンテキスト内でファイルを `@import` させて定義することができません。
 
 It's not possible to nest `@import` within mixins or control directives.
 
-ミックスインやコントロールディレクティブ内で `@import` をネストすることはできません。
+ミックスインやコントロールディレクティブ内で `@import` をネストさせて使うことはできません。
 
 ### `@media` {#media}
 
@@ -229,10 +229,10 @@ or break the flow of the stylesheet.
 For example:
 
 Sassの `@media` ディレクティブは追加された機能がありますが、CSSと同じように振る舞います。
-`@media` ディレクティブはCSSルールでネストさせることができます。
-`@media` ディレクティブはCSSルールの中で定義されている場合、
-スタイルシートの上位レベルに上げられ、そのルールの中に全てのセレクタを定義します。
-これは、セレクタを繰り返したり、スタイルシートの定義順を壊すことなくmedia仕様のスタイルを追加することが簡単にできます。
+`@media` ディレクティブはCSSのルール内でネストさせることができます。
+`@media` ディレクティブはCSSのルール内で記述されている場合、
+スタイルシートの最上位レベルに上げられ、そのルールの中に全てのセレクタを定義します。
+これは、セレクタを繰り返したり、スタイルシートの定義順を壊すことなくmediaを定義するスタイルを追加することが簡単にできます。
 例は以下のとおりです。
 
     .sidebar {
@@ -280,7 +280,7 @@ Finally, `@media` queries can contain SassScript expressions (including
 variables, functions, and operators) in place of the feature names and feature
 values. For example:
 
-最後に、`@media` クエリは、特性の名前や特性の値の場所にSassScript式(変数、関数、オペレーターを含む)を入れることができます。
+最後に、`@media` クエリには、特性の名前や特性の値の場所にSassScript式(変数、関数、オペレーターを含む)を入れることができます。
 例は以下のとおりです。
 
     $media: screen;
@@ -311,8 +311,8 @@ and the more specific class in the HTML.
 For example, suppose we have a design for a normal error
 and also for a serious error. We might write our markup like so:
 
-ページのデザインをしている時に、あるクラスに他のクラスの全てのスタイルを固有のスタイルとして持たせたい場合が時々あります。
-これを実装する最も一般的な方法は、より一般的なクラスを両方に使って、HTMLに固有のクラスを使うことです。
+ページのデザインをしている時に、あるクラスに別のクラスの全てのスタイルを固有のスタイルとして持たせたい場合が時々あります。
+これを実装する最も一般的な方法は、より一般的なクラスを両方に使って、HTMLにより固有なクラスを使うことです。
 例えば、標準的なエラーと深刻なエラーをデザインすると仮定します。
 以下のようにマークアップするとします。
 
@@ -337,16 +337,16 @@ to use `.error` with `.seriousError`.
 This is a maintenance burden, leads to tricky bugs,
 and can bring non-semantic style concerns into the markup.
 
-残念なことに、これは `.seriousError` と同時に `.error` を使うことを覚えておかなければいけません。
+残念なことに、これは `.seriousError` と `.error` を同時に使うことを覚えておかなければいけません。
 これはメンテナンス性が良くなくて、複雑なバグの原因となり、マークアップがセマンティックではなくなる危険があります。
 
 The `@extend` directive avoids these problems
 by telling Sass that one selector should inherit the styles of another selector.
 For example:
 
-`@extend` ディレクティブは、あるセレクタが他のセレクタのスタイルを継承するようにSassに指示することで、
+`@extend` ディレクティブは、あるセレクタが別のセレクタのスタイルを継承するようにSassに指示することで、
 これらの問題を避ける事ができます。
-例えば、
+例は以下のとおりです。
 
     .error {
       border: 1px #f00;
@@ -362,15 +362,15 @@ are also applied to `.seriousError`,
 in addition to the styles specific to `.seriousError`.
 In effect, everything with class `.seriousError` also has class `.error`.
 
-これは、 `.error` に定義されている全てのスタイルは、 `.seriousError` にも適用させて、
+これは、 `.error` に定義されている全てのスタイルは、 `.seriousError` にも適用されていて、
 それに加えて `.seriousError` に固有のスタイルを適用することを意味しています。
-要するに、 `.seriousError` クラスに定義されてる全てのスタイルは `.error` クラスにも定義されています。
+要するに、 `.seriousError` クラスを持つ全ての要素は、 `.error` クラスのスタイルも指定されています。
 
 Other rules that use `.error` will work for `.seriousError` as well.
 For example, if we have special styles for errors caused by hackers:
 
 `.error` を使う他のルールは、 `.seriousError` と同じように処理されます。
-例えば、ハッカーによって引き起こされたエラーに対して特別なスタイルがある場合、
+例えば、ハッカーによって引き起こされたエラーに対して特別なスタイルがある場合は以下のようになります。
 
     .error.intrusion {
       background-image: url("/image/hacked.png");
@@ -379,7 +379,7 @@ For example, if we have special styles for errors caused by hackers:
 Then `<div class="seriousError intrusion">`
 will have the `hacked.png` background image as well.
 
-それから、 `<div class="seriousError intrusion">` は同じように背景画像に `hacked.png` が定義されています。
+そして、 `<div class="seriousError intrusion">` は同じように背景画像に `hacked.png` が定義されています。
 
 #### How it Works
 
@@ -389,8 +389,9 @@ will have the `hacked.png` background image as well.
 anywhere in the stylesheet that the extended selector (.e.g `.error`) appears.
 Thus the example above:
 
-`@extend` は、拡張されたセレクタ(例えば、 `.error`)が表示されているスタイルシートのどこかに拡張するセレクタ(例えば `.seriousError`)を挿入することで処理されます。
-よって、上述の例として、
+`@extend` は、スタイルシートのどこかに記述されている拡張されるセレクタ(例、 `.error`)に、
+拡張するセレクタ(例、 `.seriousError`)を挿入することで処理されます。
+よって、上の例は以下のようになります。
 
     .error {
       border: 1px #f00;
@@ -425,7 +426,7 @@ In addition, it won't produce selectors that can't match anything, like `#main#f
 
 セレクタをマージする時、 `@extend` は不必要な重複を避けるために賢く振る舞い、
 `.seriousError.seriousError` のようなものは `.seriousError` に変換されます。
-その上、 `#main#footer` のように何かが一致しないセレクタを生成しません。
+その上、 `#main#footer` のように何も一致しないセレクタを生成することはありません。
 
 #### Extending Complex Selectors
 
@@ -535,7 +536,8 @@ Thus, the styles defined later in the document take precedence:
 `.seriousError` has background color `#ff0` rather than `#fdd`,
 since `.attention` is defined later than `.error`.
 
-要するに、 `.seriousError` クラスは `.error` クラス *と* `.attention` クラスで定義されているものを全てを持っています。
+要するに、 `.seriousError` クラスを持つ全ての要素は、
+`.error` クラス *と* `.attention` クラスで定義されているものを全てを持っています。
 よって、ドキュメントの後半で定義されたスタイルが優先され、
 `.seriousError` の背景色は、 `.attention` が `.error` よりも後ろで定義されているので、 `#fdd` ではなく `#ff0` になります。
 
@@ -554,7 +556,7 @@ It's possible for one selector to extend another selector
 that in turn extends a third.
 For example:
 
-あるセレクタが別のセレクタを順に拡張することが可能です。
+あるセレクタが別のセレクタを、順番に拡張していくことが可能です。
 例は以下のとおりです。
 
     .error {
@@ -579,8 +581,8 @@ and everything with class `.criticalError` has class `.seriousError`
 *and* class `.error`.
 It's compiled to:
 
-`.seriousError` クラスは、 `.error` クラスの全てのスタイルも定義されていて、
-`.criticalError` クラスは、 `.seriousError` クラス *と* 、 `.error` クラスのスタイルの全てが定義されています。
+`.seriousError` クラスを持つ全ての要素は、 `.error` クラスのスタイルも定義されていて、
+`.criticalError` クラスを持つ全ての要素は、 `.seriousError` クラス *と* 、 `.error` クラスのスタイルも定義されています。
 以下のようにコンパイルされます。
 
     .error, .seriousError, .criticalError {
@@ -654,9 +656,8 @@ this would make the stylesheet far too large.
 The simple example above, for instance, would require ten selectors.
 Instead, Sass generates only selectors that are likely to be useful.
 
-いずれかのシーケンスと一致する可能性がある全てのセレクタを生成することが技術的に可能ですが、
-スタイルシートが大きくなりすぎます。
-上の簡単な例では、例えば、10個のセレクタが必要です。
+いずれかのシーケンスと一致する可能性がある全てのセレクタを生成することは技術的に可能ですが、スタイルシートが大きくなりすぎます。
+上の簡単な例では、例えば、10個のセレクタを要求されます。
 代わりに、Sassは使う可能性があるセレクタだけ出力します。
 
 When the two sequences being merged have no selectors in common,
@@ -665,10 +666,9 @@ one with the first sequence before the second,
 and one with the second sequence before the first.
 For example:
 
-2つのシーケンスがマージされる時に共通するセレクタがない場合、
+2つのシーケンスがマージされる時に共通するセレクタがない場合、2つの新しいセレクタが生成されます。
 2つ目のシーケンスの前に1つ目のシーケンスが追加されたものと、
-1つ目のシーケンスの前に2つ目のシーケンスが追加されものの
-2つの新しいセレクタが生成されます。
+1つ目のシーケンスの前に2つ目のシーケンスが追加されものです。
 例は以下のとおりです。
 
     #admin .tabbar a {
@@ -742,8 +742,7 @@ They can be used anywhere a class or id could,
 and on their own they prevent rulesets from being rendered to CSS.
 For example:
 
-プレースホルダーセレクタは、 `#` や `.` が `%` に置き換えられていること以外は、
-クラスやIDセレクタのようなものです。
+プレースホルダーセレクタは、 `#` や `.` が `%` に置き換えられていること以外は、クラスやIDセレクタのようなものです。
 プレースホルダーセレクタは、クラスやIDのようにどこでも使うことができ、
 プレースホルダーセレクタ自体のルールセットがCSSに出力されることはありません。
 例は以下のとおりです。
@@ -816,7 +815,6 @@ copying styles all over the place. This means that if you use `@extend` within
 within the same directive block.
 
 `@media` のようなディレクティブ内で、 `@extend` を使うにはいくつかの制限があります。
-Sassは、 `@media` ブロックの外側にCSSルールを作ることができません。
 Sassは、あらゆる場所にスタイルをコピーすることで膨大な量のスタイルシートが作成されることがないように、
 `@media` ブロックの外側のCSSルールに `@media` 内のセレクタを適用することができません。
 これは、 `@media` 内(もしくは他のCSSディレクティブ内)で `@extend` を使う場合、
@@ -839,7 +837,7 @@ For example, the following works fine:
 
 But this is an error:
 
-しかし、これはエラーになります。
+しかし、以下のコードはエラーになります。
 
     .error {
       border: 1px #f00;
@@ -868,7 +866,7 @@ It's useful for debugging Sass files
 that have complicated SassScript going on.
 For example:
 
-`@debug` ディレクティブは、SassScript式の値を標準エラー出力に出力します。
+`@debug` ディレクティブは、SassScript式の値を標準エラー出力をストリームで出力します。
 SassScriptが複雑になってきた際のSassファイルのデバッグの際に便利です。
 例は以下のとおりです。
 
@@ -888,7 +886,7 @@ It's useful for libraries that need to warn users of deprecations
 or recovering from minor mixin usage mistakes.
 There are two major distinctions between `@warn` and `@debug`:
 
-`@warn` ディレクティブは、SassScript式の値を標準エラー出力に出力します。
+`@warn` ディレクティブは、SassScript式の値を標準エラー出力をストリームで出力します。
 非推奨の機能を使った場合にユーザーに警告を出したり、
 マイナーなミックスインの間違った使い方をした場合に警告を出して正しく使ってもらえるようにする等の
 ライブラリには便利な機能です。
