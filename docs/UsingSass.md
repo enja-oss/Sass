@@ -190,85 +190,33 @@ Sassのスタイルシートはviewsと同じようには動作しません。�
 {#quiet-option} `:quiet`
 : trueに設定すると、警告が無効になります。
 
-### Syntax Selection
-
 ### 構文の選択
 
-The Sass command-line tool will use the file extension to determine which
-syntax you are using, but there's not always a filename. The `sass`
-command-line program defaults to the indented syntax but you can pass the
-`--scss` option to it if the input should be interpreted as SCSS syntax.
-Alternatively, you can use the `scss` command-line program which is exactly
-like the `sass` program but it defaults to assuming the syntax is SCSS.
-
-Sassのコマンドラインツールは使用する構文を決定するためにファイルの拡張子を使用しますが、常にファイル名によって決定するわけではありません。
+Sassのコマンドラインツールは使用されている構文を判断するためにファイルの拡張子を使用しますが、常にファイル名によって決定するわけではありません。
 `sass`コマンドラインプログラムのデフォルトはインデントされた構文ですが、`--scss`オプションを指定することでSCSS構文として解釈されます。
-あるいは、`sass`プログラムとそっくりだがデフォルトの構文がSCSSである`scss`コマンドラインプログラムを使います。
-
-### Encodings
+あるいは、`sass`コマンドラインプログラムとそっくりですがデフォルトの構文がSCSSである`scss`コマンドラインプログラムを使えます。
 
 ### エンコーディング
-
-When running on Ruby 1.9 and later, Sass is aware of the character encoding of documents
-and will handle them the same way that CSS would.
-By default, Sass assumes that all stylesheets are encoded
-using whatever coding system your operating system defaults to.
-For many users this will be `UTF-8`, the de facto standard for the web.
-For some users, though, it may be a more local encoding.
 
 Ruby 1.9かそれ以降で実行する場合、Sassは文書の文字コードを知っており、CSSと同じように処理します。
 デフォルトではSassは、全てのスタイルシートはオペレーティングシステムのデフォルトのコーディングシステムを使ってエンコードされることを前提とします。
 多くのユーザーはWebの事実上の標準である`UTF-8`になるでしょう。
 しかしながら、一部のユーザーはよりローカルなエンコーディングになるかもしれません。
 
-If you want to use a different encoding for your stylesheet
-than your operating system default,
-you can use the `@charset` declaration just like in CSS.
-Add `@charset "encoding-name";` at the beginning of the stylesheet
-(before any whitespace or comments)
-and Sass will interpret it as the given encoding.
-Note that whatever encoding you use, it must be convertible to Unicode.
-
 スタイルシートでオペレーティングシステムのデフォルトと異なるエンコーディングを利用したい場合は、CSSと同じ`@charset`宣言を使います。
 `@charset "encoding-name";`をスタイルシートの先頭（空白やコメントより前）に追加することでSassは与えられたエンコーディングを解釈します。
 どのようなエンコーディングを使ってもユニコードに変換可能でなければならないことに注意してください。
 
-Sass will also respect any Unicode BOMs and non-ASCII-compatible Unicode encodings
-[as specified by the CSS spec](http://www.w3.org/TR/CSS2/syndata.html#charset),
-although this is *not* the recommended way
-to specify the character set for a document.
-Note that Sass does not support the obscure `UTF-32-2143`,
-`UTF-32-3412`, `EBCDIC`, `IBM1026`, and `GSM 03.38` encodings,
-since Ruby does not have support for them
-and they're highly unlikely to ever be used in practice.
-
-また、SassはCSSの仕様で指定された非ASCII互換のユニコードエンコーディングやユニコードのBOMを尊重しますが、文書の文字コード設定を指定する方法としては推奨*しません*。
+また、Sassは[CSSの仕様で指定された](http://www.w3.org/TR/CSS2/syndata.html#charset)非ASCII互換のユニコードエンコーディングやユニコードのBOMを尊重しますが、文書の文字コード設定を指定する方法としては推奨*しません*。
 Sassは`UTF-32-2143`、`UTF-32-3412`、`EBCDIC`、`IBM1026`、`GSM 03.38`などの無名なエンコーディングをサポートしていないことに注意してください。これらはRubyでもサポートされておらず、実際に利用される可能性も非常に低いからです。
-
-#### Output Encoding
 
 #### 出力のエンコーディング
 
-In general, Sass will try to encode the output stylesheet
-using the same encoding as the input stylesheet.
-In order for it to do this, though, the input stylesheet must have a `@charset` declaration;
-otherwise, Sass will default to encoding the output stylesheet as UTF-8.
-In addition, it will add a `@charset` declaration to the output
-if it's not plain ASCII.
-
 通常、Sassは入力のスタイルシートと同じエンコーディングを使って出力のスタイルシートをエンコードすることを試みます。
 しかしながら、それを適切に行うには入力のスタイルシートに`@charset`宣言がある必要があります。そうでなければ、Sassは出力のスタイルーシートのエンコーディングの初期値ををUTF-8に設定します。
-さらに、プレーンなASCIIでなければ、`@charset`宣言を出力に付け加えます。
-
-When other stylesheets with `@charset` declarations are `@import`ed,
-Sass will convert them to the same encoding as the main stylesheet.
+さらに、プレーンなASCIIでなければ、`@charset`宣言を出力したものに付け加えます。
 
 その他の`@charset`宣言があるスタイルシートが`@import`された場合、Sassはメインのスタイルシートのエンコーディングと同じものに変換します。
 
-Note that Ruby 1.8 does not have good support for character encodings,
-and so Sass behaves somewhat differently when running under it than under Ruby 1.9 and later.
-In Ruby 1.8, Sass simply uses the first `@charset` declaration in the stylesheet
-or any of the other stylesheets it `@import`s.
-
-Ruby 1.8は文字コードをサポートしていないので、Ruby 1.9以降で実行したときと比べるとSassは少々異なる振る舞いをすることに注意してください。
+Ruby 1.8は文字コードに対して、良いサポートがされてないので、Ruby 1.9以降で実行したときと比べるとSassは少々異なる振る舞いをすることに注意してください。
 Ruby 1.8では、Sassは単純にスタイルシートかそこから`@import`したスタイルシートの中の最初の`@charset`宣言を使います。
