@@ -11,8 +11,8 @@ These have various effects in Sass, detailed below.
 See also [control directives](#control_directives)
 and [mixin directives](#mixins).
 
-Sassは、ディレクティブというSass仕様のいくつかの追加機能を全てのCSS3の `@` ルールをサポートしています。
-ディレクティブは、Sassにおいて様々な機能を持っていて、詳しくは後述します。
+Sassは、CSS3の全ての `@` ルールだけではなく "ディレクティブ" として知られるSass固有の追加機能もサポートしています。
+詳しくは後述しますが、ディレクティブはSassの中で様々な効果を持っています。
 [コントロールディレクティブ](#control_directives)と[ミックスインディレクティブ](#mixins)を参照して下さい。
 
 ### `@import` {#import}
@@ -25,8 +25,8 @@ In addition, any variables or [mixins](#mixins)
 defined in imported files can be used in the main file.
 
 Sassは、SCSSとSassのファイルをインポートできるようにするために、CSSの `@import` ルールを拡張しています。
-インポートしたSCSSとSassの全てのファイルは、出力する一つのCSSファイルにマージされます。
-さらに、インポートしたファイルで定義されている任意の変数や[ミックスイン](#mixins)はメインファイルで使うことができます。
+インポートされた全てのSCSSとSassファイルは、一つのCSS出力ファイルに一緒にマージされます。
+さらに、インポートされたファイルで定義されている任意の変数や[ミックスイン](#mixins)はメインファイルで使うことができます。
 
 Sass looks for other Sass files in the current directory,
 and the Sass file directory under Rack, Rails, or Merb.
@@ -34,15 +34,15 @@ Additional search directories may be specified
 using the [`:load_paths`](#load_paths-option) option,
 or the `--load-path` option on the command line.
 
-Sassは、現在のディレクトリ内や、Rack、Rails、Merbの管理下のディレクトリ内の他のSassファイルを探します。
-[`:load_paths`](#load_paths-option)を使って指定したり、
+Sassは、現在のディレクトリ内とRack、RailsやMerbのSassファイルディレクトリ内の他のSassファイルを探します。
+[`:load_paths`](#load_paths-option)を使って指定するか、
 コマンドラインで `--load-path` オプションで指定することで探索するディレクトリを追加することもできます。
 
 `@import` takes a filename to import.
 By default, it looks for a Sass file to import directly,
 but there are a few circumstances under which it will compile to a CSS `@import` rule:
 
-`@import` は、インポートするファイルのファイル名を受け取ります。
+`@import` は、インポートするためのファイル名を取ります。
 デフォルトで、直接インポートするSassファイルを探しますが、
 CSSの `@import` ルールでコンパイルされるための条件がいくつかあります。
 
@@ -65,7 +65,7 @@ and import it.
 
 上記のいずれの条件も満たさず、拡張子が `.scss` や `.sass` の場合、
 そのファイル名のSassファイルやSCSSファイルがインポートされます。
-拡張子がない場合、Sassはそのファイル名で `.scss` や `.sass` の拡張子のファイルを探して、インポートします。
+拡張子がない場合、Sassはそのファイル名で `.scss` や `.sass` の拡張子のファイルを探して、インポートしようとします。
 
 For example,
 
@@ -116,10 +116,10 @@ interpolation is only for CSS imports.
 As such, it only works with `url()` imports.
 For example:
 
-インポートの際に `#{}` というインターポレーションを含めることができますが、一定の制限があります。
+インポートの際に `#{}` での挿入を含めることができますが、一定の制限があります。
 変数を使ってSassファイルを動的にインポートすることはできません。
-インターポレーションはCSSをインポートすることしかできません。
-このように、インターポレーションは `url()` インポートと同時に使われた時だけ処理が行われます。
+挿入はCSSをインポートすることしかできません。
+このように、挿入は `url()` インポートと同時に使われた時だけ処理が行われます。
 例えば、
 
     $family: unquote("Droid+Sans");
@@ -144,7 +144,7 @@ You can then import these files without using the underscore.
 インポートしたいが、CSSファイルにコンパイルしたくないSCSSファイルやSassファイルがある場合、
 ファイル名の最初にアンダースコアを付けます。
 こうすることで、アンダースコアを付けたファイルをCSSファイルにコンパイルしないようにSassに指示します。
-アンダースコアを付けずにこれらのファイルをインポートすることができます。
+インポートする際は、アンダースコアを付けずにこれらのファイルをインポートします。
 
 For example, you might have `_colors.scss`.
 Then no `_colors.css` file would be created,
@@ -228,11 +228,11 @@ without having to repeat selectors
 or break the flow of the stylesheet.
 For example:
 
-Sassの `@media` ディレクティブは追加された機能がありますが、CSSと同じように振る舞います。
-`@media` ディレクティブはCSSのルール内でネストさせることができます。
+Sassの `@media` ディレクティブはCSSと同じように振る舞いますが、一つだけ追加された機能があります。
+`@media` ディレクティブはCSSのルール内でネストさせることができるという機能です。
 `@media` ディレクティブはCSSのルール内で記述されている場合、
 スタイルシートの最上位レベルに上げられ、そのルールの中に全てのセレクタを定義します。
-これは、セレクタを繰り返したり、スタイルシートの定義順を壊すことなくmediaを定義するスタイルを追加することが簡単にできます。
+このことにより、セレクタを繰り返したり、スタイルシートの定義順を壊すことなくmediaを定義するスタイルを追加することが簡単にできます。
 例は以下のとおりです。
 
     .sidebar {
@@ -257,7 +257,7 @@ The queries will then be combined using the `and` operator.
 For example:
 
 `@media` クエリも別の `@media` クエリをネストすることが可能です。
-クエリは `and` オペレーターを使って連結することができます。
+クエリは `and` オペレーターを使って連結されます。
 例は以下のとおりです。
 
     @media screen {
