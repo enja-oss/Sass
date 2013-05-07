@@ -715,7 +715,7 @@ This is compiled to:
 
 #### `@extend`-Only Selectors {#placeholders}
 
-#### セレクタだけ `@extend` する {#placeholders}
+#### セレクタのみの `@extend` {#placeholders}
 
 Sometimes you'll write styles for a class
 that you only ever want to `@extend`,
@@ -724,7 +724,7 @@ This is especially true when writing a Sass library,
 where you may provide styles for users to `@extend` if they need
 and ignore if they don't.
 
-`@extend` したいが、HTMLで直接使わないスタイルを一つのクラスに書くことが時々あります。
+`@extend` したいが、HTMLで直接使わないスタイルを一つのクラスに書こうとすることがあるでしょう。
 これは、必要な時は `@extend` して、必要ない時は無視するスタイルをユーザーに提供しているようなSassのライブラリを書いている時は特にそうです。
 
 If you use normal classes for this, you end up creating a lot of extra CSS
@@ -734,7 +734,7 @@ That's why Sass supports "placeholder selectors" (for example, `%foo`).
 
 このような標準的なクラスを使う場合、スタイルシートが生成される時にたくさんのCSSが生成することになり、
 HTMLで既に使われている他のクラスと重複するリスクがあります。
-Sassが「プレースホルダーセレクタ」(例、 `%foo`)をサポートするのはこの理由からです。
+このことが、Sassが「プレースホルダーセレクタ」(例、 `%foo`)をサポートする理由です。
 
 Placeholder selectors look like class and id selectors,
 except the `#` or `.` is replaced by `%`.
@@ -805,7 +805,7 @@ example:
 
 #### `@extend` in Directives
 
-#### ディレクティブの `@extend`
+#### ディレクティブ内の `@extend`
 
 There are some restrictions on the use of `@extend` within directives such as
 `@media`. Sass is unable to make CSS rules outside of the `@media` block apply
@@ -815,10 +815,10 @@ copying styles all over the place. This means that if you use `@extend` within
 within the same directive block.
 
 `@media` のようなディレクティブ内で、 `@extend` を使うにはいくつかの制限があります。
-Sassは、あらゆる場所にスタイルをコピーすることで膨大な量のスタイルシートが作成されることがないように、
+Sassは、あらゆる場所にスタイルをコピーすることにより膨大な量のスタイルシートが作成されないように、
 `@media` ブロックの外側のCSSルールに `@media` 内のセレクタを適用することができません。
 これは、 `@media` 内(もしくは他のCSSディレクティブ内)で `@extend` を使う場合、
-同じディレクティブブロック内で記述されているセレクタだけ拡張することができます。
+同じディレクティブブロック内で記述されているセレクタだけ拡張することができるということです。
 
 For example, the following works fine:
 
