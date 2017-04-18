@@ -43,14 +43,14 @@ en.ja-ossプロジェクトでは現在管理者を募集しています。
 コンテンツの翻訳にご協力くださる方は、ぜひ[着手予定の宣言コーナー](https://github.com/enja-oss/sass/issues/1)でお知らせください。
 その際に着手予定のパートがすでに他の方と重複していないか確認ください。
 
-##参照先
+## 参照先
 
 翻訳当時のSassの[doc-src](https://github.com/nex3/sass/tree/f2ff5d2d60a461f7b1ecfdb036c558ad6fa34fa2/doc-src)内の文書を参考にしています。
 
-##ライセンス・クレジット
+## ライセンス・クレジット
 
 LICENSE-MIT を参照してください。
 
-##翻訳参加者
+## 翻訳参加者
 
 [Wiki](https://github.com/enja-oss/Sass/wiki/%E7%BF%BB%E8%A8%B3%E5%8F%82%E5%8A%A0%E8%80%85)を参照してください。
